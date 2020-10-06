@@ -25,6 +25,7 @@ const Component = ({children}) => (
 
     <Container>
       <Toolbar />
+      <Toolbar />
       {children}
     </Container>
 
