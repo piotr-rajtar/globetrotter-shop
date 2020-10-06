@@ -1,0 +1,22 @@
+@import '../../../styles/settings.scss';
+
+ .root {
+   color: orange;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+
+ .link {
+   color: orange;
+   text-decoration: none;
+ }
+
+ .icon {
+   font-size: 75px;
+ }
+
+ .title {
+   font-size: 50px;
+   margin: 0 15px;
+ }

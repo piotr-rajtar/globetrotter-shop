@@ -1,24 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import clsx from 'clsx';
+// import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
 import styles from './CartLogo.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>CartLogo</h2>
-    {children}
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Button from '@material-ui/core/Button';
+
+const Component = () => (
+  <div className={styles.root}>
+    <Button className={styles.link} component={Link} to={`/cart`}>
+      <ShoppingCartIcon className={styles.icon} />
+    </Button>
   </div>
 );
 
-Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-};
+// Component.propTypes = {
+//   children: PropTypes.node,
+//   className: PropTypes.string,
+// };
 
 // const mapStateToProps = state => ({
 //   someProp: reduxSelector(state),

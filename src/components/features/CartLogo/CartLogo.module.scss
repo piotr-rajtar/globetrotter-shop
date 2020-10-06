@@ -1,0 +1,15 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  color: orange;
+  text-decoration: none;
+}
+
+.icon {
+  font-size: 50px;
+}
