@@ -1,4 +1,22 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
+  align-items: center;
+}
+
+.icon {
+  color: orange;
+  font-size: 40px;
+  margin: 0 40px;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.link {
+  text-decoration: none;
+}
