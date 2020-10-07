@@ -12,7 +12,13 @@ import Grid from '@material-ui/core/Grid';
 
 const Component = ({ products }) => (
 
-  <Grid container className={styles.root}>
+  <Grid
+    container
+    className={styles.root}
+    direction='row'
+    justify='space-between'
+    alignItems='center'
+  >
 
     {products.map(product => (
       <Grid key={product.id} item>
