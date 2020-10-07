@@ -1,23 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import clsx from 'clsx';
+import { NavLink } from 'react-router-dom';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
 import styles from './ProductBox.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>ProductBox</h2>
-    {children}
-  </div>
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
+const Component = ({id, name, type, price, photo}) => (
+  <Card>
+    <CardActionArea>
+      <CardMedia
+        component='img'
+        alt={type}
+        height='140'
+        image={photo[0]}
+        className={styles.photo}
+      />
+
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">
+          {name}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          Prices start from {price}
+        </Typography>
+      </CardContent>
+    </CardActionArea>
+
+    <CardActions>
+      <Button
+        size='small'
+        component={NavLink}
+        exact to={`/product/${id}`}
+      >
+        Find out more
+      </Button>
+    </CardActions>
+
+  </Card>
 );
 
 Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  type: PropTypes.string,
+  price: PropTypes.number,
+  photo: PropTypes.array,
 };
 
 // const mapStateToProps = state => ({
