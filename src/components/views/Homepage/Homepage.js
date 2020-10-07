@@ -1,37 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import clsx from 'clsx';
+import { connect } from 'react-redux';
+import { getAllProducts } from '../../../redux/productsRedux';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { ProductList } from '../../features/ProductList/ProductList';
 
-import styles from './Homepage.module.scss';
+//import styles from './Homepage.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>Homepage</h2>
-    {children}
-  </div>
-);
+import Paper from '@material-ui/core/Paper';
 
-Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-};
+class Component extends React.Component {
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
+  static propTypes = {
+    products: PropTypes.array,
+  }
+
+  render() {
+    const { products } = this.props;
+
+    return(
+      <Paper>
+        <ProductList products={products} />
+      </Paper>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  products: getAllProducts(state),
+});
 
 // const mapDispatchToProps = dispatch => ({
 //   someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export {
-  Component as Homepage,
-  // Container as Homepage,
+  // Component as Homepage,
+  Container as Homepage,
   Component as HomepageComponent,
 };
