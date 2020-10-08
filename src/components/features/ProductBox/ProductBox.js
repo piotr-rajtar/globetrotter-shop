@@ -15,7 +15,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-const Component = ({id, name, type, price, photo}) => (
+const Component = ({id, name, type, price, photo, description}) => (
   <Card>
     <CardActionArea>
       <CardMedia
@@ -40,7 +40,17 @@ const Component = ({id, name, type, price, photo}) => (
       <Button
         size='small'
         component={NavLink}
-        exact to={`/product/${id}`}
+        exact to={{
+          pathname:`/product/${id}`,
+          aboutProps: {
+            id: id,
+            name: name,
+            type: type,
+            price: price,
+            photo: photo,
+            description: description,
+          },
+        }}
       >
         Find out more
       </Button>
@@ -55,6 +65,7 @@ Component.propTypes = {
   type: PropTypes.string,
   price: PropTypes.number,
   photo: PropTypes.array,
+  description: PropTypes.string,
 };
 
 // const mapStateToProps = state => ({
