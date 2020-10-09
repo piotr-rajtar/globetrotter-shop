@@ -1,4 +1,21 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  width: 50%;
+
+  ol {
+    li {
+      background-color: orange;
+    }
+  }
+
+  a {
+    span {
+      width: 40px;
+      height: 40px;
+      background-color: orange;
+      border-radius: 25%;
+    }
+  }
+}
+

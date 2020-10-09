@@ -1,23 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import clsx from 'clsx';
-
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
 import styles from './PhotoGallery.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>PhotoGallery</h2>
-    {children}
-  </div>
+import Carousel from 'react-bootstrap/Carousel';
+
+const Component = ({images}) => (
+  <Carousel className={styles.root}>
+    {images.map(image => (
+      <Carousel.Item key={image}>
+        <img
+          className='d-block w-100'
+          src={image}
+          alt="slide"
+        />
+      </Carousel.Item>
+    ))}
+  </Carousel>
 );
 
 Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+  images: PropTypes.array,
 };
 
 // const mapStateToProps = state => ({
