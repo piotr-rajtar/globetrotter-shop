@@ -43,4 +43,11 @@ export const initialState = {
       error: false,
     },
   },
+  cart: {
+    data: [],
+    loading: {
+      active: false,
+      error: false,
+    },
+  },
 };
