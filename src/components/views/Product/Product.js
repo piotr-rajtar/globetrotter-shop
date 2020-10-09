@@ -34,43 +34,56 @@ class Component extends React.Component {
   handleChange = (event) => {
     const { orderData } = this.state;
     const { value, id } = event.target;
+    const { product } = this.props;
 
     const parsedValue = formInputNumberParser(value);
+    const finalPrice = parsedValue * product.price;
 
     this.setState({
       orderData: {
         ...orderData,
         [id]: parsedValue,
+        finalPrice: finalPrice,
       },
     });
   }
 
   decreaseProductQuantity = () => {
     const { orderData } = this.state;
+    const { product } = this.props;
 
     if (orderData.quantity === 0) {
       return;
     }
 
+    const newQuantity = orderData.quantity - 1;
+    const finalPrice = newQuantity * product.price;
+
     this.setState({
       orderData: {
         ...orderData,
-        quantity: orderData.quantity - 1,
+        quantity: newQuantity,
+        finalPrice: finalPrice,
       },
     });
   }
 
   increaseProductQuantity = () => {
     const { orderData } = this.state;
+    const { product } = this.props;
 
     if (orderData.quantity === 999) {
       return;
     }
 
+    const newQuantity = orderData.quantity + 1;
+    const finalPrice = newQuantity * product.price;
+
     this.setState({
       orderData: {
         ...orderData,
-        quantity: orderData.quantity + 1,
+        quantity: newQuantity,
+        finalPrice: finalPrice,
       },
     });
   }
@@ -95,7 +108,7 @@ class Component extends React.Component {
             <ProductCounter handleChange={this.handleChange} increase={this.increaseProductQuantity} decrease={this.decreaseProductQuantity} quantity={orderData.quantity} />
 
             <Typography>
-              Price: {product.price}
+              Price: {orderData.finalPrice}$
             </Typography>
           </CardContent>
           <CardActions>
