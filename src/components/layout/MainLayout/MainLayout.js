@@ -27,6 +27,8 @@ const Component = ({children}) => (
       <Toolbar />
       <Toolbar />
       {children}
+      <Toolbar />
+      <Toolbar />
     </Container>
 
     <AppBar position='fixed' className={styles.footer}>
