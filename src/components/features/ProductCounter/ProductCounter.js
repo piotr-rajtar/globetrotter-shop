@@ -1,23 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import clsx from 'clsx';
-
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
 import styles from './ProductCounter.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>ProductCounter</h2>
-    {children}
+import TextField from '@material-ui/core/TextField';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
+import Button from '@material-ui/core/Button';
+
+const Component = ({handleChange, increase, decrease, quantity}) => (
+  <div className={styles.root}>
+    <Button onClick={decrease} className={styles.button}><RemoveIcon className={styles.icon} /></Button>
+    <TextField
+      id="quantity"
+      label="Quantity"
+      variant="outlined"
+      type="number"
+      inputProps={{
+        min: 0,
+        max: 999,
+        step: 1,
+      }}
+      onChange={handleChange}
+      required
+      className={styles.counter}
+      value={quantity}
+    />
+    <Button onClick={increase} className={styles.button}><AddIcon className={styles.icon} /></Button>
   </div>
 );
 
 Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+  handleChange: PropTypes.func,
+  increase: PropTypes.func,
+  decrease: PropTypes.func,
+  quantity: PropTypes.number,
 };
 
 // const mapStateToProps = state => ({

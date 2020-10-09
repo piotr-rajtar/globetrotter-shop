@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { getProductById } from '../../../redux/productsRedux';
+import { formInputNumberParser } from '../../../utils';
 
 import { PhotoGallery } from '../../features/PhotoGallery/PhotoGallery';
 import { ProductCounter } from '../../features/ProductCounter/ProductCounter';
@@ -18,13 +19,66 @@ import Button from '@material-ui/core/Button';
 
 
 class Component extends React.Component {
+
+  state = {
+    orderData: {
+      finalPrice: 0,
+      quantity: 0,
+    },
+  }
+
   static propTypes = {
     product: PropTypes.object,
   }
 
+  handleChange = (event) => {
+    const { orderData } = this.state;
+    const { value, id } = event.target;
+
+    const parsedValue = formInputNumberParser(value);
+
+    this.setState({
+      orderData: {
+        ...orderData,
+        [id]: parsedValue,
+      },
+    });
+  }
+
+  decreaseProductQuantity = () => {
+    const { orderData } = this.state;
+
+    if (orderData.quantity === 0) {
+      return;
+    }
+
+    this.setState({
+      orderData: {
+        ...orderData,
+        quantity: orderData.quantity - 1,
+      },
+    });
+  }
+
+  increaseProductQuantity = () => {
+    const { orderData } = this.state;
+
+    if (orderData.quantity === 999) {
+      return;
+    }
+
+    this.setState({
+      orderData: {
+        ...orderData,
+        quantity: orderData.quantity + 1,
+      },
+    });
+  }
+
   render() {
     const { product } = this.props;
-    console.log(product);
+    const { orderData } = this.state;
+    console.log(this.state);
     return(
       <Paper>
         <Card>
@@ -38,7 +92,7 @@ class Component extends React.Component {
 
             <PhotoGallery images={product.photo} />
 
-            <ProductCounter />
+            <ProductCounter handleChange={this.handleChange} increase={this.increaseProductQuantity} decrease={this.decreaseProductQuantity} quantity={orderData.quantity} />
 
             <Typography>
               Price: {product.price}
