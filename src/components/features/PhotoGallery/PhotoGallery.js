@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import uniqid from 'uniqid';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
@@ -11,7 +12,7 @@ import Carousel from 'react-bootstrap/Carousel';
 const Component = ({images}) => (
   <Carousel className={styles.root}>
     {images.map(image => (
-      <Carousel.Item key={image}>
+      <Carousel.Item key={uniqid()}>
         <img
           className='d-block w-100'
           src={image}
