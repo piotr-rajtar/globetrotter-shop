@@ -1,23 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import clsx from 'clsx';
-
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
+import { CartProduct } from '../CartProduct/CartProduct';
+
 import styles from './CartProductList.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>CartProductList</h2>
-    {children}
-  </div>
+import Grid from '@material-ui/core/Grid';
+
+const Component = ({cartProducts}) => (
+
+  <Grid
+    container
+    className={styles.root}
+    direction='column'
+    justify='center'
+    alignItems='center'
+  >
+
+    {cartProducts.map(cartProduct => (
+      <Grid key={cartProduct.id} item xs={12}>
+
+        <CartProduct {...cartProduct} />
+
+      </Grid>
+    ))}
+  </Grid>
+
 );
 
 Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+  cartProducts: PropTypes.array,
 };
 
 // const mapStateToProps = state => ({
