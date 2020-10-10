@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { getProductById } from '../../../redux/productsRedux';
+import { addCartProduct } from '../../../redux/cartRedux';
 import { formInputNumberParser } from '../../../utils';
 
 import { PhotoGallery } from '../../features/PhotoGallery/PhotoGallery';
@@ -17,7 +18,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-
 class Component extends React.Component {
 
   state = {
@@ -29,6 +29,7 @@ class Component extends React.Component {
 
   static propTypes = {
     product: PropTypes.object,
+    addCartProduct: PropTypes.func,
   }
 
   handleChange = (event) => {
@@ -88,6 +89,26 @@ class Component extends React.Component {
     });
   }
 
+  addToCart = () => {
+    const { orderData } = this.state;
+    const { product, addCartProduct } = this.props;
+
+    const cartProduct = {};
+
+    if(orderData.price !== 0) {
+      cartProduct.photo = product.photo[0];
+      cartProduct.name = product.name;
+      cartProduct.quantity = orderData.quantity;
+      cartProduct.price = orderData.finalPrice;
+      cartProduct.description = '';
+
+      addCartProduct(cartProduct);
+    }
+    else {
+      alert('Please pick at least one product');
+    }
+  }
+
   render() {
     const { product } = this.props;
     const { orderData } = this.state;
@@ -112,7 +133,7 @@ class Component extends React.Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button>Add to cart</Button>
+            <Button onClick={this.addToCart}>Add to cart</Button>
           </CardActions>
         </Card>
       </Paper>
@@ -124,11 +145,11 @@ const mapStateToProps = (state, props) => ({
   product: getProductById(state, props.match.params.id),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  addCartProduct: cartProduct => dispatch(addCartProduct(cartProduct)),
+});
 
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   // Component as Product,
