@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { connect } from 'react-redux';
+import { removeCartProduct } from '../../../redux/cartRedux';
 
 import { ProductCounter } from '../ProductCounter/ProductCounter';
 
@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+
 class Component extends React.Component {
   static propTypes = {
     id: PropTypes.string,
@@ -23,6 +24,15 @@ class Component extends React.Component {
     quantity: PropTypes.number,
     price: PropTypes.number,
     comment: PropTypes.string,
+    removeCartProduct: PropTypes.func,
+  }
+
+  removeFromCart = () => {
+    const { id, removeCartProduct } = this.props;
+
+    console.log(id);
+
+    removeCartProduct(id);
   }
 
   render() {
@@ -68,7 +78,7 @@ class Component extends React.Component {
               ${price}
             </Grid>
             <Grid item className={styles.iconContainer}>
-              <Button>
+              <Button onClick={this.removeFromCart}>
                 <DeleteIcon className={styles.icon} />
               </Button>
             </Grid>
@@ -85,15 +95,15 @@ class Component extends React.Component {
 //   someProp: reduxSelector(state),
 // });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  removeCartProduct: id => dispatch(removeCartProduct(id)),
+});
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(null, mapDispatchToProps)(Component);
 
 export {
-  Component as CartProduct,
-  // Container as CartProduct,
+  // Component as CartProduct,
+  Container as CartProduct,
   Component as CartProductComponent,
 };
 
