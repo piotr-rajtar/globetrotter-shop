@@ -51,6 +51,7 @@ export const initialState = {
         name: 'Trekking backpacks',
         quantity: 1,
         comment: '',
+        finalPrice: 470,
         price: 470,
       },
       {
@@ -59,7 +60,8 @@ export const initialState = {
         name: 'Winter Jackets',
         quantity: 2,
         comment: 'jedna zolta, jedna czerwona',
-        price: 1400,
+        finalPrice: 1400,
+        price: 700,
       },
     ],
     loading: {
