@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import uniqid from 'uniqid';
 
 import { connect } from 'react-redux';
 import { getProductById } from '../../../redux/productsRedux';
@@ -96,6 +97,7 @@ class Component extends React.Component {
     const cartProduct = {};
 
     if(orderData.finalPrice !== 0) {
+      cartProduct.id = uniqid();
       cartProduct.photo = product.photo[0];
       cartProduct.name = product.name;
       cartProduct.quantity = orderData.quantity;
