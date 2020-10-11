@@ -79,7 +79,7 @@ export const reducer = (statePart = [], action = {}) => {
             cartProduct.id === action.payload.id
               ? {
                 ...cartProduct,
-                'finalPrice': action.payload.finalPrice,
+                'finalPrice': action.payload.finalPrice? action.payload.finalPrice : cartProduct.finalPrice,
                 [action.payload.key]: action.payload.value,
               }
               : cartProduct
