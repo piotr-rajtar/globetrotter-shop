@@ -1,4 +1,39 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  flex-grow: 1;
+  margin: 10px;
+}
+
+.imageContainer {
+  width: 200px;
+  height: 200px;
+}
+
+.image {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.productName {
+  text-align: center;
+}
+
+.commentField {
+  width: 100%;
+}
+
+.price {
+  text-align: right;
+}
+
+.iconContainer {
+  text-align: right;
+}
+
+.icon {
+  color: orange;
+  font-size: 40px;
+}
