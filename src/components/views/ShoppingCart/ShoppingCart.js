@@ -25,6 +25,16 @@ class Component extends React.Component {
     return cartProducts.length !== 0? this.noEmptyCart() : this.emptyCart();
   }
 
+  totalCost() {
+    const { cartProducts } = this.props;
+
+    let totalCost = 0;
+
+    cartProducts.map(cartProduct => totalCost += cartProduct.finalPrice);
+
+    return totalCost;
+  }
+
   emptyCart() {
 
     return(
@@ -48,12 +58,17 @@ class Component extends React.Component {
 
   noEmptyCart() {
     const { cartProducts } = this.props;
+
     return(
       <Paper>
         <Typography className={styles.title} gutterBottom variant="h3" component="h1">
           Cart
         </Typography>
         <CartProductList cartProducts={cartProducts} />
+
+        <Typography className={styles.title} gutterBottom variant="h4" component="h1">
+          Total cost:{this.totalCost()}$
+        </Typography>
 
         <Button
           variant="outlined"
