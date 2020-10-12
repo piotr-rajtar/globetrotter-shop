@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { getAllCartProducts } from '../../../redux/cartRedux';
@@ -11,6 +11,7 @@ import styles from './ShoppingCart.module.scss';
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 class Component extends React.Component {
 
@@ -21,12 +22,49 @@ class Component extends React.Component {
   render() {
     const { cartProducts } = this.props;
 
+    return cartProducts.length !== 0? this.noEmptyCart() : this.emptyCart();
+  }
+
+  emptyCart() {
+
+    return(
+      <Paper>
+        <Typography className={styles.title} gutterBottom variant="h3" component="h1">
+          Your cart is empty. Pick something what helps you GlobeTrotting.
+        </Typography>
+        <Button
+          variant="outlined"
+          color="primary"
+          size="large"
+          className={styles.button}
+          component={NavLink}
+          exact to={`/`}
+        >
+          Go back to mainpage
+        </Button>
+      </Paper>
+    );
+  }
+
+  noEmptyCart() {
+    const { cartProducts } = this.props;
     return(
       <Paper>
         <Typography className={styles.title} gutterBottom variant="h3" component="h1">
           Cart
         </Typography>
         <CartProductList cartProducts={cartProducts} />
+
+        <Button
+          variant="outlined"
+          color="primary"
+          size="large"
+          className={styles.button}
+          component={NavLink}
+          exact to={`/order`}
+        >
+          Order Summary
+        </Button>
       </Paper>
     );
   }
