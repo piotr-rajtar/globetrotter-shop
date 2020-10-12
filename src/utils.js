@@ -3,3 +3,10 @@ export function formInputNumberParser(value) {
 
   return parsedValue;
 }
+
+export function createDate () {
+  const date = new Date();
+
+  const formatedDate = date.toString();
+  return formatedDate;
+}
