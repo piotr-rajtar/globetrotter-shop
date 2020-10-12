@@ -1,23 +1,79 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import clsx from 'clsx';
-
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
 import styles from './OrderForm.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>OrderForm</h2>
-    {children}
-  </div>
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
+  <form
+    className={styles.form}
+    onSubmit={submitForm}
+  >
+    <TextField
+      id="name"
+      label="Name"
+      variant="outlined"
+      InputProps={{
+        minLength: 10,
+      }}
+      required
+      fullWidth
+      className={styles.formFieldFullWidth}
+      onChange={handleChange}
+    />
+    <TextField
+      id="surname"
+      label="Surname"
+      variant="outlined"
+      InputProps={{
+        minLength: 10,
+      }}
+      required
+      fullWidth
+      className={styles.formFieldFullWidth}
+      onChange={handleChange}
+    />
+    <TextField
+      id="email"
+      label="Email"
+      variant="outlined"
+      type="email"
+      required
+      fullWidth
+      className={styles.formFieldFullWidth}
+      onChange={handleChange}
+    />
+    <TextField
+      id="telephone"
+      label="Phone number"
+      variant="outlined"
+      type="tel"
+      className={styles.formFieldPartialWidth}
+      onChange={handleChange}
+    />
+    <Button
+      variant="outlined"
+      color="primary"
+      size="large"
+      className={styles.button}
+      type="submit"
+      onClick={setOrderDate}
+    >
+      Submit Order Form
+    </Button>
+  </form>
 );
 
 Component.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+  submitForm: PropTypes.func,
+  orderData: PropTypes.object,
+  setOrderDate: PropTypes.func,
+  handleChange: PropTypes.func,
 };
 
 // const mapStateToProps = state => ({
