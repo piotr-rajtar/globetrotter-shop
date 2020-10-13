@@ -10,20 +10,8 @@
   width: 100px;
 }
 
-.button {
-  background: orange;
-  margin: 5px;
-  border-radius: 25%;
-  width: 40px;
-  height: 40px;
-}
-
-.button:hover {
-  background: lighten(orange, 10%);
-}
-
 .icon {
-  color: white;
+  color: orange;
 }
 
 input[type=number]::-webkit-inner-spin-button,

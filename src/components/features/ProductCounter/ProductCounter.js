@@ -9,16 +9,19 @@ import styles from './ProductCounter.module.scss';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 
 const Component = ({handleChange, increase, decrease, quantity}) => (
   <div className={styles.root}>
-    <Button onClick={decrease} className={styles.button}><RemoveIcon className={styles.icon} /></Button>
+    <IconButton onClick={decrease}>
+      <RemoveIcon className={styles.icon} />
+    </IconButton>
+
     <TextField
-      id="quantity"
-      label="Quantity"
-      variant="outlined"
-      type="number"
+      id='quantity'
+      label='Quantity'
+      variant='outlined'
+      type='number'
       inputProps={{
         min: 0,
         max: 999,
@@ -29,7 +32,11 @@ const Component = ({handleChange, increase, decrease, quantity}) => (
       className={styles.counter}
       value={quantity}
     />
-    <Button onClick={increase} className={styles.button}><AddIcon className={styles.icon} /></Button>
+
+    <IconButton onClick={increase}>
+      <AddIcon className={styles.icon} />
+    </IconButton>
+
   </div>
 );
 
