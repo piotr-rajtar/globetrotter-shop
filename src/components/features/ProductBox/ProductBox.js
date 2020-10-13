@@ -14,6 +14,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import SearchIcon from '@material-ui/icons/Search';
 
 const Component = ({id, name, type, price, photo}) => (
   <Card>
@@ -48,6 +49,7 @@ const Component = ({id, name, type, price, photo}) => (
         component={NavLink}
         exact to={`/product/${id}`}
         className={styles.button}
+        startIcon={<SearchIcon />}
       >
         Find out more
       </Button>
