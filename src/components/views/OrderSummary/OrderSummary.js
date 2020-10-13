@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import { OrderSummaryList } from '../../features/OrderSummaryList/OrderSummaryList';
 import { OrderForm } from '../../features/OrderForm/OrderForm';
@@ -13,6 +14,8 @@ import styles from './OrderSummary.module.scss';
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 class Component extends React.Component {
 
@@ -128,6 +131,18 @@ class Component extends React.Component {
           submitForm={this.submitForm}
           setOrderDate={this.setOrderDate}
         />
+
+        <Button
+          variant='contained'
+          size='large'
+          color='primary'
+          component={NavLink}
+          exact to={`/cart`}
+          className={styles.button}
+          startIcon={<ShoppingCartIcon />}
+        >
+          GO BACK TO CART
+        </Button>
       </Paper>
     );
   }
