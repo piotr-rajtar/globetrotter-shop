@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uniqid from 'uniqid';
+import { NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { getProductById } from '../../../redux/productsRedux';
@@ -19,6 +20,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import HomeIcon from '@material-ui/icons/Home';
 
 class Component extends React.Component {
 
@@ -171,7 +174,27 @@ class Component extends React.Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button onClick={this.addToCart}>Add to cart</Button>
+            <Button
+              variant='contained'
+              size='large'
+              color='primary'
+              onClick={this.addToCart}
+              className={styles.button}
+              startIcon={<AddShoppingCartIcon />}
+            >
+              Add to cart
+            </Button>
+            <Button
+              variant='contained'
+              size='large'
+              color='primary'
+              component={NavLink}
+              exact to={`/`}
+              className={styles.button}
+              startIcon={<HomeIcon />}
+            >
+              GO BACK TO HOMEPAGE
+            </Button>
           </CardActions>
         </Card>
       </Paper>
