@@ -18,6 +18,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 class Component extends React.Component {
 
@@ -25,6 +26,7 @@ class Component extends React.Component {
     orderData: {
       finalPrice: 0,
       quantity: 0,
+      comment: '',
     },
   }
 
@@ -33,7 +35,7 @@ class Component extends React.Component {
     addCartProduct: PropTypes.func,
   }
 
-  handleChange = (event) => {
+  handleQuantityChange = (event) => {
     const { orderData } = this.state;
     const { value, id } = event.target;
     const { product } = this.props;
@@ -49,6 +51,19 @@ class Component extends React.Component {
       },
     });
   }
+
+  handleCommentChange = (event) => {
+    const { orderData } = this.state;
+    const { value } = event.target;
+
+    this.setState({
+      orderData: {
+        ...orderData,
+        'comment': value,
+      },
+    });
+  }
+
 
   decreaseProductQuantity = () => {
     const { orderData } = this.state;
@@ -102,7 +117,7 @@ class Component extends React.Component {
       cartProduct.name = product.name;
       cartProduct.quantity = orderData.quantity;
       cartProduct.finalPrice = orderData.finalPrice;
-      cartProduct.comment = '';
+      cartProduct.comment = orderData.comment;
       cartProduct.price = product.price;
 
       addCartProduct(cartProduct);
@@ -129,7 +144,26 @@ class Component extends React.Component {
 
             <PhotoGallery images={product.photo} />
 
-            <ProductCounter handleChange={this.handleChange} increase={this.increaseProductQuantity} decrease={this.decreaseProductQuantity} quantity={orderData.quantity} />
+            <ProductCounter
+              handleChange={this.handleQuantityChange}
+              increase={this.increaseProductQuantity}
+              decrease={this.decreaseProductQuantity}
+              quantity={orderData.quantity}
+            />
+
+            <TextField
+              id='comment'
+              label='Comment'
+              variant='outlined'
+              multiline
+              rowsMax={4}
+              inputProps={{
+                maxLength: 100,
+              }}
+              className={styles.commentField}
+              value={orderData.comment}
+              onChange={this.handleCommentChange}
+            />
 
             <Typography>
               Price: {orderData.finalPrice}$
