@@ -17,7 +17,11 @@ import Button from '@material-ui/core/Button';
 
 const Component = ({id, name, type, price, photo}) => (
   <Card>
-    <CardActionArea className={styles.cardClickableArea} component={NavLink} exact to={`/product/${id}`} >
+    <CardActionArea
+      className={styles.cardClickableArea}
+      component={NavLink}
+      exact to={`/product/${id}`}
+    >
       <CardMedia
         component='img'
         alt={type}
@@ -27,10 +31,10 @@ const Component = ({id, name, type, price, photo}) => (
       />
 
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
+        <Typography gutterBottom variant='h5' component='h2'>
           {name}
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant='body2' color='textSecondary' component='p'>
           Prices start from {price}
         </Typography>
       </CardContent>
