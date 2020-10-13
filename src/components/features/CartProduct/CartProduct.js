@@ -16,6 +16,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
 
 class Component extends React.Component {
@@ -177,7 +178,12 @@ class Component extends React.Component {
               </Typography>
             </Grid>
             <Grid item xs>
-              <ProductCounter handleChange={this.handleQuantityChange} quantity={cartProductData.quantity} increase={this.increaseCartProductQuantity} decrease={this.decreaseCartProductQuantity} />
+              <ProductCounter
+                handleChange={this.handleQuantityChange}
+                quantity={cartProductData.quantity}
+                increase={this.increaseCartProductQuantity}
+                decrease={this.decreaseCartProductQuantity}
+              />
             </Grid>
             <Grid item xs>
               <TextField
@@ -201,9 +207,9 @@ class Component extends React.Component {
               ${cartProductData.finalPrice}
             </Grid>
             <Grid item className={styles.iconContainer}>
-              <Button onClick={this.removeFromCart}>
+              <IconButton onClick={this.removeFromCart}>
                 <DeleteIcon className={styles.icon} />
-              </Button>
+              </IconButton>
             </Grid>
           </Grid>
 
