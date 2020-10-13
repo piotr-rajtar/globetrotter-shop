@@ -16,9 +16,9 @@ const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
     onSubmit={submitForm}
   >
     <TextField
-      id="name"
-      label="Name"
-      variant="outlined"
+      id='name'
+      label='Name'
+      variant='outlined'
       InputProps={{
         minLength: 10,
       }}
@@ -28,9 +28,9 @@ const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
       onChange={handleChange}
     />
     <TextField
-      id="surname"
-      label="Surname"
-      variant="outlined"
+      id='surname'
+      label='Surname'
+      variant='outlined'
       InputProps={{
         minLength: 10,
       }}
@@ -40,29 +40,29 @@ const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
       onChange={handleChange}
     />
     <TextField
-      id="email"
-      label="Email"
-      variant="outlined"
-      type="email"
+      id='email'
+      label='Email'
+      variant='outlined'
+      type='email'
       required
       fullWidth
       className={styles.formFieldFullWidth}
       onChange={handleChange}
     />
     <TextField
-      id="telephone"
-      label="Phone number"
-      variant="outlined"
-      type="tel"
+      id='telephone'
+      label='Phone number'
+      variant='outlined'
+      type='tel'
       className={styles.formFieldPartialWidth}
       onChange={handleChange}
     />
     <Button
       variant='contained'
-      color="primary"
-      size="large"
+      color='primary'
+      size='large'
       className={styles.button}
-      type="submit"
+      type='submit'
       onClick={setOrderDate}
       startIcon={<SendIcon />}
     >
