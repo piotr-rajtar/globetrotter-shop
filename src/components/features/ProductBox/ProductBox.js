@@ -38,9 +38,12 @@ const Component = ({id, name, type, price, photo}) => (
 
     <CardActions>
       <Button
+        variant='contained'
         size='small'
+        color='primary'
         component={NavLink}
         exact to={`/product/${id}`}
+        className={styles.button}
       >
         Find out more
       </Button>
