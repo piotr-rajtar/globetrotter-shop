@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { removeCartProduct, updateCartProduct } from '../../../redux/cartRedux';
@@ -151,14 +152,18 @@ class Component extends React.Component {
   }
 
   render() {
-    const { name, photo } = this.props;
+    const { id, name, photo } = this.props;
     const { cartProductData } = this.state;
 
     return(
       <Grid container className={styles.root} spacing={2}>
 
         <Grid item>
-          <ButtonBase className={styles.imageContainer}>
+          <ButtonBase
+            className={styles.imageContainer}
+            component={NavLink}
+            exact to={`/product/${id}`}
+          >
             <img className={styles.image} src={photo} alt='product' />
           </ButtonBase>
         </Grid>
