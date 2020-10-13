@@ -12,6 +12,7 @@ import styles from './NotFound.module.scss';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import HomeIcon from '@material-ui/icons/Home';
 
 const Component = () => (
   <Paper>
@@ -29,6 +30,7 @@ const Component = () => (
       className={styles.button}
       component={NavLink}
       exact to={`/`}
+      startIcon={<HomeIcon />}
     >
       GO BACK TO HOMEPAGE
     </Button>
