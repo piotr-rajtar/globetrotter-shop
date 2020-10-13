@@ -121,6 +121,7 @@ class Component extends React.Component {
       cartProduct.price = product.price;
 
       addCartProduct(cartProduct);
+      alert('Product added to the cart');
     }
     else {
       alert('Please pick at least one product');
