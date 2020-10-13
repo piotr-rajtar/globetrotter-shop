@@ -122,6 +122,7 @@ class Component extends React.Component {
       cartProduct.finalPrice = orderData.finalPrice;
       cartProduct.comment = orderData.comment;
       cartProduct.price = product.price;
+      cartProduct.productId = product.id;
 
       addCartProduct(cartProduct);
       alert('Product added to the cart');

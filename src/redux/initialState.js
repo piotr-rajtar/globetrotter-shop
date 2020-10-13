@@ -46,22 +46,24 @@ export const initialState = {
   cart: {
     data: [
       {
-        id: '1',
+        id: 'fsdfsdfsdf',
         photo: 'https://8a.pl/media/catalog/product/cache/50c979a1d95be64bd6e5eb8edcfe0bae/p/l/plecak-salewa-cammino-60-10-midnight-navy_1.jpg',
         name: 'Trekking backpacks',
         quantity: 1,
         comment: '',
         finalPrice: 470,
         price: 470,
+        productId: '1',
       },
       {
-        id: '2',
+        id: 's234dfsdf',
         photo: 'https://8a.pl/media/catalog/product/cache/50c979a1d95be64bd6e5eb8edcfe0bae/k/u/kurtka-dynafit-tlt-light-insulation-hooded-moss-1599130781.jpg',
         name: 'Winter Jackets',
         quantity: 2,
         comment: 'jedna zolta, jedna czerwona',
         finalPrice: 1400,
         price: 700,
+        productId: '2',
       },
     ],
     loading: {

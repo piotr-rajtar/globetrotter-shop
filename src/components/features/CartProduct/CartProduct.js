@@ -39,6 +39,7 @@ class Component extends React.Component {
     comment: PropTypes.string,
     removeCartProduct: PropTypes.func,
     updateCartProduct: PropTypes.func,
+    productId: PropTypes.string,
   }
 
   removeFromCart = () => {
@@ -153,7 +154,7 @@ class Component extends React.Component {
   }
 
   render() {
-    const { id, name, photo } = this.props;
+    const { productId, name, photo } = this.props;
     const { cartProductData } = this.state;
 
     return(
@@ -163,7 +164,7 @@ class Component extends React.Component {
           <ButtonBase
             className={styles.imageContainer}
             component={NavLink}
-            exact to={`/product/${id}`}
+            exact to={`/product/${productId}`}
           >
             <img className={styles.image} src={photo} alt='product' />
           </ButtonBase>
