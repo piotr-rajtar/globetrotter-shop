@@ -8,6 +8,7 @@ import styles from './OrderForm.module.scss';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import SendIcon from '@material-ui/icons/Send';
 
 const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
   <form
@@ -57,14 +58,15 @@ const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
       onChange={handleChange}
     />
     <Button
-      variant="outlined"
+      variant='contained'
       color="primary"
       size="large"
       className={styles.button}
       type="submit"
       onClick={setOrderDate}
+      startIcon={<SendIcon />}
     >
-      Submit Order Form
+      SUBMIT ORDER FORM
     </Button>
   </form>
 );
