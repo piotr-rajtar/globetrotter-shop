@@ -23,14 +23,14 @@ const Component = () => (
     <Typography>Are you lost, Globetrotter?</Typography>
     <Typography>Given page does not exist or has been removed already!</Typography>
     <Button
-      variant="outlined"
-      color="primary"
-      size="large"
+      variant='contained'
+      size='large'
+      color='primary'
       className={styles.button}
       component={NavLink}
       exact to={`/`}
     >
-          GO BACK TO HOMEPAGE
+      GO BACK TO HOMEPAGE
     </Button>
   </Paper>
 );
