@@ -17,7 +17,7 @@ import Button from '@material-ui/core/Button';
 
 const Component = ({id, name, type, price, photo}) => (
   <Card>
-    <CardActionArea>
+    <CardActionArea className={styles.cardClickableArea} component={NavLink} exact to={`/product/${id}`} >
       <CardMedia
         component='img'
         alt={type}
