@@ -12,6 +12,8 @@ import styles from './ShoppingCart.module.scss';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import HomeIcon from '@material-ui/icons/Home';
+import ViewListIcon from '@material-ui/icons/ViewList';
 
 class Component extends React.Component {
 
@@ -43,14 +45,15 @@ class Component extends React.Component {
           Your cart is empty. Pick something what helps you GlobeTrotting.
         </Typography>
         <Button
-          variant="outlined"
-          color="primary"
-          size="large"
+          variant='contained'
+          size='large'
+          color='primary'
           className={styles.button}
           component={NavLink}
           exact to={`/`}
+          startIcon={<HomeIcon />}
         >
-          Go back to mainpage
+          GO BACK TO HOMEPAGE
         </Button>
       </Paper>
     );
@@ -71,14 +74,26 @@ class Component extends React.Component {
         </Typography>
 
         <Button
-          variant="outlined"
-          color="primary"
-          size="large"
+          variant='contained'
+          size='large'
+          color='primary'
           className={styles.button}
           component={NavLink}
           exact to={`/order`}
+          startIcon={<ViewListIcon />}
         >
-          Order Summary
+          ORDER SUMMARY
+        </Button>
+        <Button
+          variant='contained'
+          size='large'
+          color='primary'
+          className={styles.button}
+          component={NavLink}
+          exact to={`/`}
+          startIcon={<HomeIcon />}
+        >
+          GO BACK TO HOMEPAGE
         </Button>
       </Paper>
     );
