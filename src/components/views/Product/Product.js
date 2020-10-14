@@ -108,6 +108,16 @@ class Component extends React.Component {
     });
   }
 
+  clearProductFormData() {
+    this.setState({
+      orderData: {
+        finalPrice: 0,
+        quantity: 0,
+        comment: '',
+      },
+    });
+  }
+
   addToCart = () => {
     const { orderData } = this.state;
     const { product, addCartProduct } = this.props;
@@ -126,6 +136,7 @@ class Component extends React.Component {
 
       addCartProduct(cartProduct);
       alert('Product added to the cart');
+      this.clearProductFormData();
     }
     else {
       alert('Please pick at least one product');
