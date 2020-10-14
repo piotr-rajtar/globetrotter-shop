@@ -22,7 +22,11 @@ class Component extends React.Component {
 
     return(
       <Paper>
-        <Typography className={styles.title} gutterBottom variant="h3" component="h1">
+        <Typography
+          className={styles.title}
+          gutterBottom variant='h3'
+          component='h1'
+        >
           Pick something what helps you GlobeTrotting
         </Typography>
         <ProductList products={products} />
