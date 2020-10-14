@@ -26,17 +26,26 @@ const Component = ({id, name, type, price, photo}) => (
       <CardMedia
         component='img'
         alt={type}
-        height='140'
         image={photo[0]}
         className={styles.photo}
       />
 
       <CardContent>
-        <Typography gutterBottom variant='h5' component='h2'>
+        <Typography
+          gutterBottom
+          variant='h5'
+          component='h2'
+          className={styles.cardTitle}
+        >
           {name}
         </Typography>
-        <Typography variant='body2' color='textSecondary' component='p'>
-          Prices start from {price}
+
+        <Typography
+          variant='body1'
+          component='p'
+          className={styles.cardBody}
+        >
+          Prices start from {price}$!
         </Typography>
       </CardContent>
     </CardActionArea>
@@ -44,7 +53,7 @@ const Component = ({id, name, type, price, photo}) => (
     <CardActions>
       <Button
         variant='contained'
-        size='small'
+        size='large'
         color='primary'
         component={NavLink}
         exact to={`/product/${id}`}

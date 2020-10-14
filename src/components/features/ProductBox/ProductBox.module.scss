@@ -9,15 +9,26 @@
 }
 
 .button {
-  color: orange;
-}
+  color: $main-color;
+  width: 100%;
 
-.button:hover {
-  color: orange;
-  text-decoration: none;
+  &:hover {
+    color: $main-color;
+    text-decoration: none;
+  }
 }
 
 .cardClickableArea:hover {
   text-decoration: none;
   color: inherit;
+}
+
+.cardTitle {
+  text-align: center;
+  color: $main-color;
+}
+
+.cardBody {
+  text-align: center;
+  color: $secondary-color;
 }
