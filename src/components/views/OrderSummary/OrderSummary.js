@@ -70,8 +70,6 @@ class Component extends React.Component {
   }
 
   clearCart() {
-    const { orderData } = this.state;
-
     this.setState({
       orderData: {
         name: '',
@@ -81,8 +79,6 @@ class Component extends React.Component {
         ordered: '',
       },
     });
-
-    console.log(orderData);
   }
 
   submitForm = (event) => {
@@ -99,15 +95,7 @@ class Component extends React.Component {
     if(!error) {
       addOrder(orderData);
       alert('Order submitted successfully');
-      this.setState({
-        orderData: {
-          name: '',
-          surname: '',
-          email: '',
-          telephone: '',
-          ordered: '',
-        },
-      });
+      this.clearCart();
     } else {
       alert(error);
     }

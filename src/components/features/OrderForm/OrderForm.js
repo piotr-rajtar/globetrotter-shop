@@ -26,6 +26,7 @@ const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
       fullWidth
       className={styles.formFieldFullWidth}
       onChange={handleChange}
+      value={orderData.name}
     />
     <TextField
       id='surname'
@@ -38,6 +39,7 @@ const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
       fullWidth
       className={styles.formFieldFullWidth}
       onChange={handleChange}
+      value={orderData.surname}
     />
     <TextField
       id='email'
@@ -48,6 +50,7 @@ const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
       fullWidth
       className={styles.formFieldFullWidth}
       onChange={handleChange}
+      value={orderData.email}
     />
     <TextField
       id='telephone'
@@ -56,6 +59,7 @@ const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
       type='tel'
       className={styles.formFieldPartialWidth}
       onChange={handleChange}
+      value={orderData.telephone}
     />
     <Button
       variant='contained'
