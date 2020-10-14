@@ -16,6 +16,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Alert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
 
 class Component extends React.Component {
 
@@ -28,12 +30,48 @@ class Component extends React.Component {
       ordered: '',
       orderDetails: this.props.cartProducts,
     },
+    snackbar: {
+      snackbarOpen: false,
+      snackbarMessage: '',
+      alertSeverity: '',
+    },
   }
 
   static propTypes = {
     cartProducts: PropTypes.array,
     addOrder: PropTypes.func,
     clearCartProducts: PropTypes.func,
+  }
+
+  snackbarClose = () => {
+    this.setState({
+      snackbar: {
+        snackbarOpen: false,
+        snackbarMessage: '',
+      },
+    });
+  }
+
+  showAlert(error) {
+
+    if(error) {
+      this.setState({
+        snackbar: {
+          snackbarOpen: true,
+          snackbarMessage: error,
+          alertSeverity: 'error',
+        },
+      });
+    }
+    else {
+      this.setState({
+        snackbar: {
+          snackbarOpen: true,
+          snackbarMessage: 'Order form submitted successfully',
+          alertSeverity: 'success',
+        },
+      });
+    }
   }
 
   totalCost() {
@@ -99,19 +137,34 @@ class Component extends React.Component {
 
     if(!error) {
       addOrder(orderData);
-      alert('Order submitted successfully');
+      this.showAlert(error);
       this.clearCart();
     } else {
-      alert(error);
+      this.showAlert(error);
     }
   }
 
   render() {
     const { cartProducts } = this.props;
-    const { orderData } = this.state;
+    const { orderData, snackbar } = this.state;
 
     return(
       <Paper>
+        <Snackbar
+          anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+          open={snackbar.snackbarOpen}
+          autoHideDuration={6000}
+          onClose={this.snackbarClose}
+        >
+          <Alert
+            variant='filled'
+            severity={snackbar.alertSeverity}
+            onClose={this.snackbarClose}
+          >
+            {snackbar.snackbarMessage}
+          </Alert>
+        </Snackbar>
+
         <OrderSummaryList cartProducts={cartProducts} />
 
         <Typography className={styles.title} gutterBottom variant="h4" component="h1">
