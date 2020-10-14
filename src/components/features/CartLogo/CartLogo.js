@@ -1,40 +1,51 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { connect } from 'react-redux';
+import { getAllCartProducts } from '../../../redux/cartRedux';
 
 import styles from './CartLogo.module.scss';
 
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
 
-const Component = () => (
-  <div className={styles.root}>
-    <Button className={styles.link} component={Link} to={`/cart`}>
-      <ShoppingCartIcon className={styles.icon} />
-    </Button>
-  </div>
-);
+class Component extends React.Component {
 
-// Component.propTypes = {
-//   children: PropTypes.node,
-//   className: PropTypes.string,
-// };
+  static propTypes = {
+    cartProducts: PropTypes.array,
+  }
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
+  cartProductCounter() {
+    const { cartProducts } = this.props;
+
+    return cartProducts.length;
+  }
+
+  render() {
+    return(
+      <div className={styles.root}>
+        <Button className={styles.link} component={Link} to={`/cart`}>
+          <ShoppingCartIcon className={styles.icon} />
+        </Button>
+        <span className={styles.productCounter}>{this.cartProductCounter()}</span>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  cartProducts: getAllCartProducts(state),
+});
 
 // const mapDispatchToProps = dispatch => ({
 //   someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export {
-  Component as CartLogo,
-  // Container as CartLogo,
+  // Component as CartLogo,
+  Container as CartLogo,
   Component as CartLogoComponent,
 };
