@@ -8,13 +8,13 @@
 }
 
 .icon {
-  color: orange;
+  color: $main-color;
   font-size: 40px;
   margin: 0 40px;
-}
 
-.icon:hover {
-  transform: scale(1.2);
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .link {
