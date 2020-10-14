@@ -1,20 +1,20 @@
 @import '../../../styles/settings.scss';
 
  .root {
-   color: orange;
+   color: $main-color;
    display: flex;
    justify-content: space-between;
    align-items: center;
  }
 
  .link {
-   color: orange;
+   color: $main-color;
    text-decoration: none;
- }
 
- .link:hover {
-  color: orange;
-}
+   &:hover {
+     color: $main-color;
+   }
+ }
 
  .icon {
    font-size: 75px;
