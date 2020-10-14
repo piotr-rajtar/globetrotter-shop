@@ -22,6 +22,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import HomeIcon from '@material-ui/icons/Home';
+import Alert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
 
 class Component extends React.Component {
 
@@ -31,11 +33,25 @@ class Component extends React.Component {
       quantity: 0,
       comment: '',
     },
+    snackbar: {
+      snackbarOpen: false,
+      snackbarMessage: '',
+      alertSeverity: '',
+    },
   }
 
   static propTypes = {
     product: PropTypes.object,
     addCartProduct: PropTypes.func,
+  }
+
+  snackbarClose = () => {
+    this.setState({
+      snackbar: {
+        snackbarOpen: false,
+        snackbarMessage: '',
+      },
+    });
   }
 
   handleQuantityChange = (event) => {
@@ -118,11 +134,35 @@ class Component extends React.Component {
     });
   }
 
+  showAlert(error) {
+
+    if(error) {
+      this.setState({
+        snackbar: {
+          snackbarOpen: true,
+          snackbarMessage: 'Please pick at least one product',
+          alertSeverity: 'error',
+        },
+      });
+    }
+    else {
+      this.setState({
+        snackbar: {
+          snackbarOpen: true,
+          snackbarMessage: 'Product has been added to the cart',
+          alertSeverity: 'success',
+        },
+      });
+    }
+  }
+
   addToCart = () => {
     const { orderData } = this.state;
     const { product, addCartProduct } = this.props;
 
     const cartProduct = {};
+
+    let ifError = false;
 
     if(orderData.finalPrice !== 0) {
       cartProduct.id = uniqid();
@@ -135,20 +175,36 @@ class Component extends React.Component {
       cartProduct.productId = product.id;
 
       addCartProduct(cartProduct);
-      alert('Product added to the cart');
+      this.showAlert(ifError);
       this.clearProductFormData();
     }
     else {
-      alert('Please pick at least one product');
+      let ifError = true;
+      this.showAlert(ifError);
     }
   }
 
   render() {
     const { product } = this.props;
-    const { orderData } = this.state;
-    console.log(this.state);
+    const { orderData, snackbar } = this.state;
+
     return(
       <Paper>
+        <Snackbar
+          anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+          open={snackbar.snackbarOpen}
+          autoHideDuration={6000}
+          onClose={this.snackbarClose}
+        >
+          <Alert
+            variant='filled'
+            severity={snackbar.alertSeverity}
+            onClose={this.snackbarClose}
+          >
+            {snackbar.snackbarMessage}
+          </Alert>
+        </Snackbar>
+
         <Card>
           <CardContent>
             <Typography>
