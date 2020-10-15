@@ -1,7 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .root {
-  margin: 10px;
+  margin: 30px auto;
   display: flex;
   align-items: center;
 }
@@ -11,7 +11,7 @@
 }
 
 .icon {
-  color: orange;
+  color: $main-color;
 }
 
 input[type=number]::-webkit-inner-spin-button,
