@@ -3,15 +3,64 @@
 // .root {
 // }
 
+.gridContainer {
+  padding: 0 30px;
+}
+
+.title {
+  color: $main-color;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+  color: $secondary-color;
+}
+
+.featuresContainer {
+  padding-left: 30px;
+  display: flex;
+  justify-content: center;
+}
+
 .commentField {
   width: 100%;
 }
 
 .button {
-  color: orange;
+  color: $main-color;
+
+  &:hover {
+    color: $main-color;
+    text-decoration: none;
+  }
 }
 
-.button:hover {
-  color: orange;
-  text-decoration: none;
+.productCounterContainer {
+  display: flex;
+  justify-content: center;
 }
+
+.commentFieldContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.finalPrice {
+  color: $main-color;
+  text-align: center;
+  margin: 20px auto;
+  font-weight: bold;
+}
+
+.buttonHomepage {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.buttonCart {
+  display: flex;
+  justify-content: flex-end;
+}
+

@@ -14,9 +14,6 @@ import { ProductCounter } from '../../features/ProductCounter/ProductCounter';
 import styles from './Product.module.scss';
 
 import Paper from '@material-ui/core/Paper';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -24,6 +21,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import HomeIcon from '@material-ui/icons/Home';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
+import Grid from '@material-ui/core/Grid';
 
 class Component extends React.Component {
 
@@ -189,7 +187,7 @@ class Component extends React.Component {
     const { orderData, snackbar } = this.state;
 
     return(
-      <Paper>
+      <Paper className={styles.root}>
         <Snackbar
           anchorOrigin={{vertical: 'top', horizontal: 'center'}}
           open={snackbar.snackbarOpen}
@@ -205,66 +203,109 @@ class Component extends React.Component {
           </Alert>
         </Snackbar>
 
-        <Card>
-          <CardContent>
-            <Typography>
+        <Grid container className={styles.gridContainer}>
+
+          <Grid item xs={12}>
+            <Typography
+              className={styles.title}
+              gutterBottom variant='h3'
+              component='h1'
+            >
               {product.name}
             </Typography>
-            <Typography>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography
+              variant='h4'
+              component='p'
+              className={styles.description}
+            >
               {product.description}
             </Typography>
+          </Grid>
 
-            <PhotoGallery images={product.photo} />
+          <Grid item xs={12} container>
+            <Grid item xs={12} sm={6}>
+              <PhotoGallery
+                images={product.photo}
+              />
+            </Grid>
 
-            <ProductCounter
-              handleChange={this.handleQuantityChange}
-              increase={this.increaseProductQuantity}
-              decrease={this.decreaseProductQuantity}
-              quantity={orderData.quantity}
-            />
+            <Grid item xs sm container direction='column' className={styles.featuresContainer}>
+              <Grid item className={styles.productCounterContainer}>
+                <ProductCounter
+                  handleChange={this.handleQuantityChange}
+                  increase={this.increaseProductQuantity}
+                  decrease={this.decreaseProductQuantity}
+                  quantity={orderData.quantity}
+                />
+              </Grid>
 
-            <TextField
-              id='comment'
-              label='Comment'
-              variant='outlined'
-              multiline
-              rowsMax={4}
-              inputProps={{
-                maxLength: 100,
-              }}
-              className={styles.commentField}
-              value={orderData.comment}
-              onChange={this.handleCommentChange}
-            />
+              <Grid item className={styles.commentFieldContainer}>
+                <TextField
+                  id='comment'
+                  label='Comment'
+                  variant='outlined'
+                  multiline
+                  rows={4}
+                  rowsMax={4}
+                  inputProps={{
+                    maxLength: 100,
+                  }}
+                  className={styles.commentField}
+                  value={orderData.comment}
+                  onChange={this.handleCommentChange}
+                />
+              </Grid>
 
-            <Typography>
-              Price: {orderData.finalPrice}$
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              variant='contained'
-              size='large'
-              color='primary'
-              onClick={this.addToCart}
-              className={styles.button}
-              startIcon={<AddShoppingCartIcon />}
-            >
-              Add to cart
-            </Button>
-            <Button
-              variant='contained'
-              size='large'
-              color='primary'
-              component={NavLink}
-              exact to={`/`}
-              className={styles.button}
-              startIcon={<HomeIcon />}
-            >
-              GO BACK TO HOMEPAGE
-            </Button>
-          </CardActions>
-        </Card>
+              <Grid item>
+                <Typography
+                  variant='h5'
+                  component='p'
+                  className={styles.finalPrice}
+                >
+                  Price: {orderData.finalPrice}$
+                </Typography>
+              </Grid>
+
+              <Grid item container>
+
+                <Grid item xs={6} className={styles.buttonHomepage}>
+                  <Button
+                    variant='contained'
+                    size='large'
+                    color='primary'
+                    component={NavLink}
+                    exact to={`/`}
+                    className={styles.button}
+                    startIcon={<HomeIcon />}
+                  >
+                    HOMEPAGE
+                  </Button>
+                </Grid>
+
+                <Grid item xs={6} className={styles.buttonCart}>
+                  <Button
+                    variant='contained'
+                    size='large'
+                    color='primary'
+                    onClick={this.addToCart}
+                    className={styles.button}
+                    startIcon={<AddShoppingCartIcon />}
+                  >
+                    ADD TO CART
+                  </Button>
+                </Grid>
+
+              </Grid>
+
+            </Grid>
+
+          </Grid>
+
+        </Grid>
+
       </Paper>
     );
   }
