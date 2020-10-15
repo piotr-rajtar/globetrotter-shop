@@ -208,7 +208,8 @@ class Component extends React.Component {
           <Grid item xs={12}>
             <Typography
               className={styles.title}
-              gutterBottom variant='h3'
+              gutterBottom
+              variant='h3'
               component='h1'
             >
               {product.name}
