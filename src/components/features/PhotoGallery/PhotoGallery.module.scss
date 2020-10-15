@@ -1,11 +1,12 @@
 @import '../../../styles/settings.scss';
 
 .root {
-  width: 50%;
+  width: 60%;
+  margin: 30px auto;
 
   ol {
     li {
-      background-color: orange;
+      background-color: $main-color;
     }
   }
 
@@ -13,7 +14,7 @@
     span {
       width: 40px;
       height: 40px;
-      background-color: orange;
+      background-color: $main-color;
       border-radius: 25%;
     }
   }
