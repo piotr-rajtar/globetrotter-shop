@@ -3,15 +3,32 @@
 // .root {
 // }
 
-.image {
-  width: 300px;
+.gridContainer {
+  padding: 0 40px;
+}
+
+.title {
+  color: $main-color;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.text {
+  color: $main-color;
+  text-align: center;
+}
+
+.buttonContainer {
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
 }
 
 .button {
-  color: orange;
-}
+  color: $main-color;
 
-.button:hover {
-  color: orange;
-  text-decoration: none;
+  &:hover {
+    color: $main-color;
+    text-decoration: none;
+  }
 }
