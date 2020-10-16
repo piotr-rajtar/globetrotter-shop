@@ -2,3 +2,38 @@
 
 // .root {
 // }
+
+.tableHeaderCenter {
+  font-weight: bold;
+  color: $main-color;
+  text-align: center;
+}
+
+.tableHeaderLeftEdge {
+  font-weight: bold;
+  color: $main-color;
+  text-align: left;
+}
+
+.tableHeaderRightEdge {
+  font-weight: bold;
+  color: $main-color;
+  text-align: right;
+}
+
+.tableBodyCenter {
+  text-align: center;
+  color: $secondary-color;
+}
+
+.tableBodyLeftEdge {
+  text-align: left;
+  font-weight: bold;
+  color: $secondary-color;
+}
+
+.tableBodyRightEdge {
+  text-align: right;
+  color: $secondary-color;
+  font-weight: bold;
+}

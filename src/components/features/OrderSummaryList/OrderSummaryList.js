@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import clsx from 'clsx';
-
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
@@ -15,22 +13,22 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 
 const Component = ({cartProducts}) => (
-  <Table aria-label='simple table'>
+  <Table>
     <TableHead>
       <TableRow>
-        <TableCell>Product</TableCell>
-        <TableCell>Quantity</TableCell>
-        <TableCell>Comment</TableCell>
-        <TableCell>Price</TableCell>
+        <TableCell className={styles.tableHeaderLeftEdge}>Product</TableCell>
+        <TableCell className={styles.tableHeaderCenter}>Quantity</TableCell>
+        <TableCell className={styles.tableHeaderCenter}>Comment</TableCell>
+        <TableCell className={styles.tableHeaderRightEdge}>Price</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
       {cartProducts.map(cartProduct => (
         <TableRow key={cartProduct.id}>
-          <TableCell>{cartProduct.name}</TableCell>
-          <TableCell>{cartProduct.quantity}</TableCell>
-          <TableCell>{cartProduct.comment}</TableCell>
-          <TableCell>{cartProduct.finalPrice}</TableCell>
+          <TableCell className={styles.tableBodyLeftEdge}>{cartProduct.name}</TableCell>
+          <TableCell className={styles.tableBodyCenter}>{cartProduct.quantity}</TableCell>
+          <TableCell className={styles.tableBodyCenter}>{cartProduct.comment}</TableCell>
+          <TableCell className={styles.tableBodyRightEdge}>{cartProduct.finalPrice}</TableCell>
         </TableRow>
       ))}
     </TableBody>
