@@ -14,14 +14,13 @@ const Component = ({cartProducts}) => (
 
   <Grid
     container
-    className={styles.root}
     direction='column'
     justify='center'
     alignItems='center'
   >
 
     {cartProducts.map(cartProduct => (
-      <Grid key={cartProduct.id} item xs={12}>
+      <Grid key={cartProduct.id} item className={styles.itemContainer}>
 
         <CartProduct {...cartProduct} />
 
