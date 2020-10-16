@@ -55,27 +55,33 @@ const Component = ({submitForm, orderData, handleChange, formId}) => (
       value={orderData.phone}
     />
 
-    <FormLabel component="legend" className={styles.radioLegend}>Preferred contact</FormLabel>
+    <FormLabel
+      component='legend'
+      className={styles.radioLegend}
+    >
+      Preferred contact
+    </FormLabel>
+
     <RadioGroup
       row
-      id="preferredContact"
+      id='preferredContact'
       onChange={handleChange}
       value={orderData.preferredContact}
     >
       <FormControlLabel
         name='preferredContact'
-        value="phone"
-        control={<Radio color="primary" />}
-        label="Phone"
-        labelPlacement="end"
+        value='phone'
+        control={<Radio color='primary' />}
+        label='Phone'
+        labelPlacement='end'
         className={styles.radioButtons}
       />
       <FormControlLabel
         name='preferredContact'
-        value="email"
-        control={<Radio color="primary" />}
-        label="E-mail"
-        labelPlacement="end"
+        value='email'
+        control={<Radio color='primary' />}
+        label='E-mail'
+        labelPlacement='end'
         className={styles.radioButtons}
       />
     </RadioGroup>
