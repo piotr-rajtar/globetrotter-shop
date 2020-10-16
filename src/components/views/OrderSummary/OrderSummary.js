@@ -147,7 +147,7 @@ class Component extends React.Component {
     let error = null;
 
     if(!orderData.name.length || !orderData.email.length || !orderData.phone.length) error='All form fields should be filled';
-    else if(orderData.name.length < 15) error ='Please enter you full name - min. 15 characters';
+    else if(orderData.name.length < 7) error ='Please enter you full name - min. 7 characters';
 
     if(!error) {
       addOrder(orderData);
