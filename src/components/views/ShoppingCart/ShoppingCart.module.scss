@@ -20,7 +20,10 @@
 }
 
 .totalCost {
+  padding: 10px 0;
   font-weight: bold;
+  border-top: 1px solid $main-color;
+  border-bottom: 1px solid $main-color;
 }
 
 .button {
