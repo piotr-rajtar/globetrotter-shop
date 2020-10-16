@@ -233,7 +233,7 @@ class Component extends React.Component {
               />
             </Grid>
 
-            <Grid item xs sm container direction='column' className={styles.featuresContainer}>
+            <Grid item xs container direction='column' className={styles.featuresContainer}>
               <Grid item className={styles.productCounterContainer}>
                 <ProductCounter
                   handleChange={this.handleQuantityChange}
