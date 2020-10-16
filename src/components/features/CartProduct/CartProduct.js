@@ -11,7 +11,6 @@ import { ProductCounter } from '../ProductCounter/ProductCounter';
 import styles from './CartProduct.module.scss';
 
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
