@@ -93,14 +93,14 @@ class Component extends React.Component {
             <CartProductList cartProducts={cartProducts} />
           </Grid>
 
-          <Grid itex xs={12} className={styles.totalCostContainer}>
+          <Grid item xs={12} className={styles.totalCostContainer}>
             <Typography
               className={styles.totalCost}
               gutterBottom
               variant='h4'
               component='span'
             >
-              Total cost:{this.totalCost()}$
+              Total cost: {this.totalCost()}$
             </Typography>
           </Grid>
 
