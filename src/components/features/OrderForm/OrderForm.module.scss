@@ -1,13 +1,27 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
-
-.button {
-  color: orange;
+.root {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.button:hover {
-  color: orange;
-  text-decoration: none;
+.formFieldFullWidth {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.formFieldPartialWidth {
+  margin: 10px 0;
+}
+
+.radioLegend {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.radioButtons {
+    span:first-of-type {
+      color:$main-color;
+    }
 }

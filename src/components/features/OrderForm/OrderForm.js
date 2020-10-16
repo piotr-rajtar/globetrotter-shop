@@ -7,13 +7,17 @@ import PropTypes from 'prop-types';
 import styles from './OrderForm.module.scss';
 
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import SendIcon from '@material-ui/icons/Send';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
 
-const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
+
+const Component = ({submitForm, orderData, handleChange, formId}) => (
   <form
-    className={styles.form}
+    className={styles.root}
     onSubmit={submitForm}
+    id={formId}
   >
     <TextField
       id='name'
@@ -28,19 +32,7 @@ const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
       onChange={handleChange}
       value={orderData.name}
     />
-    <TextField
-      id='surname'
-      label='Surname'
-      variant='outlined'
-      InputProps={{
-        minLength: 10,
-      }}
-      required
-      fullWidth
-      className={styles.formFieldFullWidth}
-      onChange={handleChange}
-      value={orderData.surname}
-    />
+
     <TextField
       id='email'
       label='Email'
@@ -52,34 +44,65 @@ const Component = ({submitForm, orderData, setOrderDate, handleChange}) => (
       onChange={handleChange}
       value={orderData.email}
     />
+
     <TextField
-      id='telephone'
+      id='phone'
       label='Phone number'
       variant='outlined'
       type='tel'
       className={styles.formFieldPartialWidth}
       onChange={handleChange}
-      value={orderData.telephone}
+      value={orderData.phone}
     />
-    <Button
-      variant='contained'
-      color='primary'
-      size='large'
-      className={styles.button}
-      type='submit'
-      onClick={setOrderDate}
-      startIcon={<SendIcon />}
+
+    <FormLabel component="legend" className={styles.radioLegend}>Preferred contact</FormLabel>
+    <RadioGroup
+      row
+      id="preferredContact"
+      onChange={handleChange}
+      value={orderData.preferredContact}
     >
-      SUBMIT ORDER FORM
-    </Button>
+      <FormControlLabel
+        name='preferredContact'
+        value="phone"
+        control={<Radio color="primary" />}
+        label="Phone"
+        labelPlacement="end"
+        className={styles.radioButtons}
+      />
+      <FormControlLabel
+        name='preferredContact'
+        value="email"
+        control={<Radio color="primary" />}
+        label="E-mail"
+        labelPlacement="end"
+        className={styles.radioButtons}
+      />
+    </RadioGroup>
+
+    <TextField
+      name='message'
+      label='Message'
+      variant='outlined'
+      multiline
+      rows={4}
+      rowsMax={4}
+      inputProps={{
+        maxLength: 100,
+      }}
+      className={styles.formFieldFullWidth}
+      onChange={handleChange}
+      value={orderData.message}
+    />
+
   </form>
 );
 
 Component.propTypes = {
   submitForm: PropTypes.func,
   orderData: PropTypes.object,
-  setOrderDate: PropTypes.func,
   handleChange: PropTypes.func,
+  formId: PropTypes.string,
 };
 
 // const mapStateToProps = state => ({
