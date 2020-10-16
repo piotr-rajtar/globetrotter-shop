@@ -18,15 +18,18 @@ import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
+import Grid from '@material-ui/core/Grid';
+import SendIcon from '@material-ui/icons/Send';
 
 class Component extends React.Component {
 
   state = {
     orderData: {
       name: '',
-      surname: '',
       email: '',
-      telephone: '',
+      phone: '',
+      preferredContact: 'phone',
+      message: '',
       ordered: '',
       orderDetails: this.props.cartProducts,
     },
@@ -86,14 +89,24 @@ class Component extends React.Component {
 
   handleChange = (event) => {
     const { orderData } = this.state;
-    const { value, id } = event.target;
+    const { value, id, name } = event.target;
 
-    this.setState({
-      orderData: {
-        ...orderData,
-        [id]: value,
-      },
-    });
+    if(id) {
+      this.setState({
+        orderData: {
+          ...orderData,
+          [id]: value,
+        },
+      });
+    }
+    else {
+      this.setState({
+        orderData: {
+          ...orderData,
+          [name]: value,
+        },
+      });
+    }
   }
 
   setOrderDate = () => {
@@ -114,9 +127,10 @@ class Component extends React.Component {
     this.setState({
       orderData: {
         name: '',
-        surname: '',
         email: '',
-        telephone: '',
+        phone: '',
+        preferredContact: 'phone',
+        message: '',
         ordered: '',
       },
     });
@@ -132,8 +146,8 @@ class Component extends React.Component {
 
     let error = null;
 
-    if(!orderData.name.length || !orderData.surname.length || !orderData.email.length || !orderData.telephone.length) error='All form fields should be filled';
-    else if(orderData.name.length > 15 || orderData.surname.length > 20) error ='Name or surname is too long. Name max 15 characters, surname max 20';
+    if(!orderData.name.length || !orderData.email.length || !orderData.phone.length) error='All form fields should be filled';
+    else if(orderData.name.length < 15) error ='Please enter you full name - min. 15 characters';
 
     if(!error) {
       addOrder(orderData);
@@ -165,30 +179,88 @@ class Component extends React.Component {
           </Alert>
         </Snackbar>
 
-        <OrderSummaryList cartProducts={cartProducts} />
+        <Grid container className={styles.gridContainer} justify='center'>
 
-        <Typography className={styles.title} gutterBottom variant="h4" component="h1">
-          Total cost:{this.totalCost()}$
-        </Typography>
+          <Grid item xs={12}>
+            <Typography
+              className={styles.title}
+              gutterBottom
+              variant='h3'
+              component='h1'
+            >
+              ORDER SUMMARY
+            </Typography>
+          </Grid>
 
-        <OrderForm
-          orderData={orderData}
-          handleChange={this.handleChange}
-          submitForm={this.submitForm}
-          setOrderDate={this.setOrderDate}
-        />
+          <Grid item xs={12}>
+            <OrderSummaryList cartProducts={cartProducts} />
+          </Grid>
 
-        <Button
-          variant='contained'
-          size='large'
-          color='primary'
-          component={NavLink}
-          exact to={`/cart`}
-          className={styles.button}
-          startIcon={<ShoppingCartIcon />}
-        >
-          GO BACK TO CART
-        </Button>
+          <Grid item xs={12} className={styles.totalCostContainer}>
+            <Typography
+              className={styles.totalCost}
+              gutterBottom
+              variant='h4'
+              component='span'
+            >
+              Total cost: {this.totalCost()}$
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} className={styles.contactFormHeaderContainer}>
+            <Typography
+              gutterBottom
+              variant='h5'
+              component='span'
+            >
+              Contact form
+            </Typography>
+          </Grid>
+
+          <Grid item xs={6} className={styles.form}>
+            <OrderForm
+              orderData={orderData}
+              handleChange={this.handleChange}
+              submitForm={this.submitForm}
+              formId='orderSummaryForm'
+            />
+          </Grid>
+
+          <Grid item container className={styles.buttonsContainer}>
+
+            <Grid item xs={6} className={styles.buttonCart}>
+              <Button
+                variant='contained'
+                size='large'
+                color='primary'
+                component={NavLink}
+                exact to={`/cart`}
+                className={styles.button}
+                startIcon={<ShoppingCartIcon />}
+              >
+                GO BACK TO CART
+              </Button>
+            </Grid>
+
+            <Grid item xs={6} className={styles.buttonSubmitOrder}>
+              <Button
+                variant='contained'
+                color='primary'
+                size='large'
+                className={styles.button}
+                type='submit'
+                onClick={this.setOrderDate}
+                form='orderSummaryForm'
+                startIcon={<SendIcon />}
+              >
+                SUBMIT ORDER FORM
+              </Button>
+            </Grid>
+
+          </Grid>
+
+        </Grid>
+
       </Paper>
     );
   }

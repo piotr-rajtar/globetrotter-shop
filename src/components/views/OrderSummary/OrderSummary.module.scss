@@ -3,11 +3,54 @@
 // .root {
 // }
 
-.button {
-  color: orange;
+.gridContainer {
+  padding: 0 40px;
 }
 
-.button:hover {
-  color: orange;
-  text-decoration: none;
+.title {
+  color: $main-color;
+  padding: 20px 20px;
+  text-align: center;
+}
+
+.totalCostContainer {
+  text-align: center;
+  margin: 50px auto 15px;
+  color: $main-color;
+}
+
+.totalCost {
+  padding: 10px 0;
+  font-weight: bold;
+  border-top: 1px solid $main-color;
+  border-bottom: 1px solid $main-color;
+}
+
+.contactFormHeaderContainer{
+  text-align: center;
+  color: $main-color;
+  margin: 30px auto;
+}
+
+.buttonsContainer {
+  margin: 40px auto;
+}
+
+.button {
+  color: $main-color;
+
+  &:hover {
+    color: $main-color;
+    text-decoration: none;
+  }
+}
+
+.buttonCart {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.buttonSubmitOrder {
+  display: flex;
+  justify-content: flex-end;
 }
