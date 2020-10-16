@@ -1,12 +1,21 @@
 @import '../../../styles/settings.scss';
 
-.root {
-  flex-grow: 1;
-  margin: 10px;
+// .root {
+// }
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  color: $main-color;
+  font-size: 60px;
 }
 
 .imageContainer {
-  width: 200px;
+  width: 100%;
   height: 200px;
 }
 
@@ -17,23 +26,40 @@
   object-fit: contain;
 }
 
+.productNameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .productName {
-  text-align: center;
+  color: $main-color;
+}
+
+.cartFormFields {
+  // display: flex;
+  // align-items: center;
+}
+
+.formFieldLine {
+  display: flex;
+  justify-content: center;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.price {
+  color: $main-color;
 }
 
 .commentField {
   width: 100%;
 }
 
-.price {
-  text-align: right;
-}
 
-.iconContainer {
-  text-align: right;
-}
 
-.icon {
-  color: orange;
-  font-size: 40px;
-}
+

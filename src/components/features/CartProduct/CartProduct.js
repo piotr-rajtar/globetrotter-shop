@@ -158,9 +158,15 @@ class Component extends React.Component {
     const { cartProductData } = this.state;
 
     return(
-      <Grid container className={styles.root} spacing={2}>
+      <Grid container>
 
-        <Grid item>
+        <Grid item xs={1} className={styles.iconContainer}>
+          <IconButton onClick={this.removeFromCart}>
+            <DeleteIcon className={styles.icon} />
+          </IconButton>
+        </Grid>
+
+        <Grid item xs={2} className={styles.cartItem}>
           <ButtonBase
             className={styles.imageContainer}
             component={NavLink}
@@ -170,56 +176,58 @@ class Component extends React.Component {
           </ButtonBase>
         </Grid>
 
-        <Grid item xs={12} sm container>
+        <Grid item xs={3} className={styles.productNameContainer}>
+          <Typography className={styles.productName} variant='h6'>
+            {name}
+          </Typography>
+        </Grid>
 
-          <Grid  item xs container direction='column' spacing={2}>
-            <Grid item xs>
-              <Typography className={styles.productName} gutterBottom variant='subtitle1'>
-                {name}
-              </Typography>
-            </Grid>
-            <Grid item xs>
-              <ProductCounter
-                handleChange={this.handleQuantityChange}
-                quantity={cartProductData.quantity}
-                increase={this.increaseCartProductQuantity}
-                decrease={this.decreaseCartProductQuantity}
-              />
-            </Grid>
-            <Grid item xs>
-              <TextField
-                id='comment'
-                label='Comment'
-                variant='outlined'
-                multiline
-                rowsMax={4}
-                inputProps={{
-                  maxLength: 100,
-                }}
-                className={styles.commentField}
-                value={cartProductData.comment}
-                onChange={this.handleCommentChange}
-              />
-            </Grid>
+        <Grid  item xs container direction='column' className={styles.cartFormFields}>
+
+          <Grid item xs className={styles.formFieldLine}>
+            <ProductCounter
+              handleChange={this.handleQuantityChange}
+              quantity={cartProductData.quantity}
+              increase={this.increaseCartProductQuantity}
+              decrease={this.decreaseCartProductQuantity}
+            />
           </Grid>
 
-          <Grid  item xs container direction='column' spacing={2}>
-            <Grid className={styles.price} item>
-              ${cartProductData.finalPrice}
-            </Grid>
-            <Grid item className={styles.iconContainer}>
-              <IconButton onClick={this.removeFromCart}>
-                <DeleteIcon className={styles.icon} />
-              </IconButton>
-            </Grid>
+          <Grid item xs className={styles.formFieldLine}>
+            <TextField
+              id='comment'
+              label='Comment'
+              variant='outlined'
+              multiline
+              rows={1}
+              rowsMax={4}
+              inputProps={{
+                maxLength: 100,
+              }}
+              className={styles.commentField}
+              value={cartProductData.comment}
+              onChange={this.handleCommentChange}
+            />
           </Grid>
 
+        </Grid>
+
+        <Grid item xs={1} className={styles.priceContainer}>
+          <Typography className={styles.price} variant='h6'>
+            {cartProductData.finalPrice}$
+          </Typography>
         </Grid>
 
       </Grid>
     );
   }
 }
+
+
+
+
+
+
 
 // const mapStateToProps = state => ({
 //   someProp: reduxSelector(state),
