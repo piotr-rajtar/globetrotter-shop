@@ -1,0 +1,21 @@
+{
+  "name": "globetrotter-shop-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm-run-all -l -p start:*",
+    "start:server": "nodemon server.js",
+    "start:client": "cd client && yarn start",
+    "build": "cd client && yarn install && yarn build",
+    "postinstall": "cd client && yarn install"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.9",
+    "nodemon": "^2.0.5",
+    "npm-run-all": "^4.1.5"
+  }
+}
