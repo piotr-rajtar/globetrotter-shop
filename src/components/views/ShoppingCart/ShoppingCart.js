@@ -47,10 +47,20 @@ class Component extends React.Component {
             <Typography
               className={styles.title}
               gutterBottom
-              variant='h3'
+              variant='h1'
               component='h1'
             >
-              Your cart is empty. Pick something what helps you GlobeTrotting.
+              Your cart is empty.
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography
+              className={styles.text}
+              gutterBottom
+              variant='h3'
+              component='p'
+            >
+              Pick something what helps you GlobeTrotting.
             </Typography>
           </Grid>
           <Grid item xs={12} className={styles.buttonEmptyCartContainer}>

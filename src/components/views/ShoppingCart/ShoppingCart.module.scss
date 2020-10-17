@@ -9,7 +9,12 @@
 
 .title {
   color: $main-color;
-  padding: 20px 20px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.text {
+  color: $main-color;
   text-align: center;
 }
 
