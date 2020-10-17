@@ -140,11 +140,13 @@ class Component extends React.Component {
 
   submitForm = (event) => {
     const { orderData } = this.state;
-    const { addOrder } = this.props;
+    const { addOrder, cartProducts } = this.props;
 
     event.preventDefault();
 
     let error = null;
+
+    if(cartProducts.length === 0) error='Your cart is empty!'
 
     if(!orderData.name.length || !orderData.email.length || !orderData.phone.length) error='All form fields should be filled';
     else if(orderData.name.length < 7) error ='Please enter you full name - min. 7 characters';
