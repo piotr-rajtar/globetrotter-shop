@@ -10,6 +10,7 @@ import styles from './Homepage.module.scss';
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 class Component extends React.Component {
 
@@ -22,14 +23,26 @@ class Component extends React.Component {
 
     return(
       <Paper>
-        <Typography
-          className={styles.title}
-          gutterBottom variant='h3'
-          component='h1'
-        >
-          Pick something what helps you GlobeTrotting
-        </Typography>
-        <ProductList products={products} />
+        <Grid container>
+
+          <Grid item xs={12} className={styles.gridContainer} justify='center'>
+            <Typography
+              className={styles.title}
+              gutterBottom
+              variant='h3'
+              component='h1'
+            >
+              Pick something what helps you GlobeTrotting
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12}>
+            <ProductList products={products} />
+          </Grid>
+
+        </Grid>
+
+
       </Paper>
     );
   }
