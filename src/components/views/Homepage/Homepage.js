@@ -23,9 +23,9 @@ class Component extends React.Component {
 
     return(
       <Paper>
-        <Grid container>
+        <Grid container  className={styles.gridContainer} justify='center'>
 
-          <Grid item xs={12} className={styles.gridContainer} justify='center'>
+          <Grid item xs={12}>
             <Typography
               className={styles.title}
               gutterBottom
@@ -41,7 +41,6 @@ class Component extends React.Component {
           </Grid>
 
         </Grid>
-
 
       </Paper>
     );
