@@ -21,7 +21,7 @@ const Component = ({ products }) => (
   >
 
     {products.map(product => (
-      <Grid key={product.id} item>
+      <Grid key={product._id} item>
 
         <ProductBox {...product} />
 
