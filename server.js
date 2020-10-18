@@ -3,7 +3,8 @@ const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
 
-// MIEJSCE NA IMPORT PLIKÓW Z ENDPOINTAMI
+/* ENDPOINTS ROUTES IMPORT */
+const productRoutes = require('./routes/product.routes');
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /* API ENDPOINTS */
-//app.use('/api', `endpoint z importu powyzej`);
+app.use('/api', productRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {
