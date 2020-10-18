@@ -16,12 +16,12 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 
-const Component = ({id, name, type, price, photo}) => (
+const Component = ({_id, name, type, price, photo}) => (
   <Card>
     <CardActionArea
       className={styles.cardClickableArea}
       component={NavLink}
-      exact to={`/product/${id}`}
+      exact to={`/product/${_id}`}
     >
       <CardMedia
         component='img'
@@ -56,7 +56,7 @@ const Component = ({id, name, type, price, photo}) => (
         size='large'
         color='primary'
         component={NavLink}
-        exact to={`/product/${id}`}
+        exact to={`/product/${_id}`}
         className={styles.button}
         startIcon={<SearchIcon />}
       >
@@ -68,7 +68,7 @@ const Component = ({id, name, type, price, photo}) => (
 );
 
 Component.propTypes = {
-  id: PropTypes.string,
+  _id: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
   price: PropTypes.number,
