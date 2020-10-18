@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { getAllProducts } from '../../../redux/productsRedux';
+import { getAllProducts, getAllProductsRequest } from '../../../redux/productsRedux';
 
 import { ProductList } from '../../features/ProductList/ProductList';
 
@@ -16,6 +16,14 @@ class Component extends React.Component {
 
   static propTypes = {
     products: PropTypes.array,
+    getAllProductsRequest: PropTypes.func,
+  }
+
+  async componentDidMount() {
+    const { getAllProductsRequest } = this.props;
+
+    await getAllProductsRequest();
+
   }
 
   render() {
@@ -51,11 +59,11 @@ const mapStateToProps = state => ({
   products: getAllProducts(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  getAllProductsRequest: () => dispatch(getAllProductsRequest()),
+});
 
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   // Component as Homepage,
