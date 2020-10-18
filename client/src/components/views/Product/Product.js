@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import uniqid from 'uniqid';
 import { NavLink } from 'react-router-dom';
+import { Loader } from '../../features/Loader/Loader';
 
 import { connect } from 'react-redux';
-import { getProductById } from '../../../redux/productsRedux';
+import { getProductById, getProductByIdRequest } from '../../../redux/productsRedux';
 import { addCartProduct } from '../../../redux/cartRedux';
 import { formInputNumberParser } from '../../../utils';
 
@@ -41,6 +41,13 @@ class Component extends React.Component {
   static propTypes = {
     product: PropTypes.object,
     addCartProduct: PropTypes.func,
+    getProductByIdRequest: PropTypes.func,
+  }
+
+  componentDidMount() {
+    const { getProductByIdRequest } = this.props;
+
+    getProductByIdRequest();
   }
 
   snackbarClose = () => {
@@ -80,7 +87,6 @@ class Component extends React.Component {
       },
     });
   }
-
 
   decreaseProductQuantity = () => {
     const { orderData } = this.state;
@@ -163,14 +169,13 @@ class Component extends React.Component {
     let ifError = false;
 
     if(orderData.finalPrice !== 0 && orderData.quantity !== 0) {
-      cartProduct.id = uniqid();
       cartProduct.photo = product.photo[0];
       cartProduct.name = product.name;
       cartProduct.quantity = orderData.quantity;
       cartProduct.finalPrice = orderData.finalPrice;
       cartProduct.comment = orderData.comment;
       cartProduct.price = product.price;
-      cartProduct.productId = product.id;
+      cartProduct.productId = product._id;
 
       addCartProduct(cartProduct);
       this.showAlert(ifError);
@@ -185,6 +190,8 @@ class Component extends React.Component {
   render() {
     const { product } = this.props;
     const { orderData, snackbar } = this.state;
+
+    if(!product) return(<Loader />);
 
     return(
       <Paper className={styles.root}>
@@ -316,8 +323,9 @@ const mapStateToProps = (state, props) => ({
   product: getProductById(state, props.match.params.id),
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, props) => ({
   addCartProduct: cartProduct => dispatch(addCartProduct(cartProduct)),
+  getProductByIdRequest: () => dispatch(getProductByIdRequest(props.match.params.id)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

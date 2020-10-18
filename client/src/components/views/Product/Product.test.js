@@ -11,9 +11,13 @@ const product = {
   description: 'description',
 };
 
+const testFunction = () => {
+  console.log('Test function');
+};
+
 describe('Component Product', () => {
   it('should render without crashing', () => {
-    const component = shallow(<ProductComponent product={product} />);
+    const component = shallow(<ProductComponent product={product} getProductByIdRequest={testFunction} />);
     expect(component).toBeTruthy();
   });
 });
