@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { removeCartProduct, updateCartProduct } from '../../../redux/cartRedux';
 import { formInputNumberParser } from '../../../utils';
+import { IMAGES_URL } from '../../../config';
 
 import { ProductCounter } from '../ProductCounter/ProductCounter';
 
@@ -171,7 +172,7 @@ class Component extends React.Component {
             component={NavLink}
             exact to={`/product/${productId}`}
           >
-            <img className={styles.image} src={photo} alt='product' />
+            <img className={styles.image} src={`${IMAGES_URL}/${photo}`} alt='product' />
           </ButtonBase>
         </Grid>
 
