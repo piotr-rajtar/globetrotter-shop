@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 /* ENDPOINTS ROUTES IMPORT */
 const productRoutes = require('./routes/product.routes');
+const orderRoutes = require('./routes/order.routes');
 
 const app = express();
 
@@ -15,10 +16,11 @@ app.use(express.urlencoded({ extended: false }));
 
 /* API ENDPOINTS */
 app.use('/api', productRoutes);
+app.use('/api', orderRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {
-  res.status(404).send({ post: 'Not found...' });
+  res.status(404).send({ message: 'Not found...' });
 });
 
 /* REACT WEBSITE */
