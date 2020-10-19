@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { getAllProducts, getAllProductsRequest } from '../../../redux/productsRedux';
+import { Loader } from '../../features/Loader/Loader';
 
 import { ProductList } from '../../features/ProductList/ProductList';
 
@@ -28,6 +29,8 @@ class Component extends React.Component {
 
   render() {
     const { products } = this.props;
+
+    if(!products) return(<Loader />);
 
     return(
       <Paper>
