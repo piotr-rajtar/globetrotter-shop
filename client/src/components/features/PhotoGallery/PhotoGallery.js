@@ -4,6 +4,7 @@ import uniqid from 'uniqid';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { IMAGES_URL } from '../../../config';
 
 import styles from './PhotoGallery.module.scss';
 
@@ -15,7 +16,7 @@ const Component = ({images}) => (
       <Carousel.Item key={uniqid()}>
         <img
           className='d-block w-100'
-          src={image}
+          src={`${IMAGES_URL}/${image}`}
           alt="slide"
         />
       </Carousel.Item>
