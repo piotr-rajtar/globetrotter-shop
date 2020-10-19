@@ -7,7 +7,7 @@ import { OrderForm } from '../../features/OrderForm/OrderForm';
 
 import { connect } from 'react-redux';
 import { getAllCartProducts, clearCart } from '../../../redux/cartRedux';
-import { addOrder } from '../../../redux/ordersRedux';
+import { addOrderRequest } from '../../../redux/ordersRedux';
 import { createDate } from '../../../utils';
 
 import styles from './OrderSummary.module.scss';
@@ -31,6 +31,7 @@ class Component extends React.Component {
       preferredContact: 'phone',
       message: '',
       ordered: '',
+      totalCost: '',
       orderDetails: this.props.cartProducts,
     },
     snackbar: {
@@ -42,7 +43,7 @@ class Component extends React.Component {
 
   static propTypes = {
     cartProducts: PropTypes.array,
-    addOrder: PropTypes.func,
+    addOrderRequest: PropTypes.func,
     clearCartProducts: PropTypes.func,
   }
 
@@ -109,14 +110,16 @@ class Component extends React.Component {
     }
   }
 
-  setOrderDate = () => {
+  setOrderParams = () => {
     const { orderData } = this.state;
     const date = createDate();
+    const totalCost = this.totalCost();
 
     this.setState({
       orderData: {
         ...orderData,
         ordered: date,
+        totalCost: totalCost,
       },
     });
   }
@@ -132,6 +135,7 @@ class Component extends React.Component {
         preferredContact: 'phone',
         message: '',
         ordered: '',
+        totalCost: '',
       },
     });
 
@@ -140,19 +144,19 @@ class Component extends React.Component {
 
   submitForm = (event) => {
     const { orderData } = this.state;
-    const { addOrder, cartProducts } = this.props;
+    const { addOrderRequest, cartProducts } = this.props;
 
     event.preventDefault();
 
     let error = null;
 
-    if(cartProducts.length === 0) error='Your cart is empty!'
+    if(cartProducts.length === 0) error='Your cart is empty!';
 
     if(!orderData.name.length || !orderData.email.length || !orderData.phone.length) error='All form fields should be filled';
     else if(orderData.name.length < 7) error ='Please enter you full name - min. 7 characters';
 
     if(!error) {
-      addOrder(orderData);
+      addOrderRequest(orderData);
       this.showAlert(error);
       this.clearCart();
     } else {
@@ -251,7 +255,7 @@ class Component extends React.Component {
                 size='large'
                 className={styles.button}
                 type='submit'
-                onClick={this.setOrderDate}
+                onClick={this.setOrderParams}
                 form='orderSummaryForm'
                 startIcon={<SendIcon />}
               >
@@ -273,7 +277,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addOrder: orderData => dispatch(addOrder(orderData)),
+  addOrderRequest: orderData => dispatch(addOrderRequest(orderData)),
   clearCartProducts: () => dispatch(clearCart()),
 });
 
