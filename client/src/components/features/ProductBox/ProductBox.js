@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { IMAGES_URL } from '../../../config';
 
 import styles from './ProductBox.module.scss';
 
@@ -26,7 +27,7 @@ const Component = ({_id, name, type, price, photo}) => (
       <CardMedia
         component='img'
         alt={type}
-        image={photo[0]}
+        image={`${IMAGES_URL}/${photo[0]}`}
         className={styles.photo}
       />
 
