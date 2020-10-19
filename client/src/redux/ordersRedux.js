@@ -1,3 +1,6 @@
+import Axios from 'axios';
+import { API_URL } from '../config';
+
 /* selectors */
 
 /* action name creator */
@@ -17,6 +20,22 @@ export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 
 export const addOrder = payload => ({ payload, type: ADD_ORDER });
+
+/* thunk creators */
+export const addOrderRequest = (orderData) => {
+  return async dispatch => {
+
+    dispatch(fetchStarted());
+
+    try {
+      let res = await Axios.post(`${API_URL}/order/add`, orderData);
+      dispatch(addOrder(res.data));
+    }
+    catch(err) {
+      dispatch(fetchError(err.message || true));
+    }
+  };
+};
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
