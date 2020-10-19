@@ -168,7 +168,7 @@ class Component extends React.Component {
 
     let ifError = false;
 
-    if(orderData.finalPrice !== 0 && orderData.quantity !== 0) {
+    if(orderData.finalPrice > 0 && orderData.quantity > 0 && orderData.quantity < 1000) {
       cartProduct.photo = product.photo[0];
       cartProduct.name = product.name;
       cartProduct.quantity = orderData.quantity;
