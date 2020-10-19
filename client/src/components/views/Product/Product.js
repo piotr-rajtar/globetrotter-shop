@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Loader } from '../../features/Loader/Loader';
+import uniqid from 'uniqid';
 
 import { connect } from 'react-redux';
 import { getProductById, getProductByIdRequest } from '../../../redux/productsRedux';
@@ -169,6 +170,7 @@ class Component extends React.Component {
     let ifError = false;
 
     if(orderData.finalPrice > 0 && orderData.quantity > 0 && orderData.quantity < 1000 && orderData.comment.length < 100) {
+      cartProduct.id = uniqid();
       cartProduct.photo = product.photo[0];
       cartProduct.name = product.name;
       cartProduct.quantity = orderData.quantity;
