@@ -24,7 +24,7 @@ const Component = ({submitForm, orderData, handleChange, formId}) => (
       label='Name'
       variant='outlined'
       InputProps={{
-        minLength: 10,
+        minLength: 7,
       }}
       required
       fullWidth
