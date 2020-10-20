@@ -12,7 +12,7 @@ const product = {
 };
 
 const testFunction = () => {
-  console.log('Test function');
+  return {};
 };
 
 describe('Component Product', () => {
