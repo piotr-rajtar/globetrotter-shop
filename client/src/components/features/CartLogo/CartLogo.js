@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { getAllCartProducts } from '../../../redux/cartRedux';
+import { getAllCartProducts, getCartProductsRequest } from '../../../redux/cartRedux';
 
 import styles from './CartLogo.module.scss';
 
@@ -14,12 +14,19 @@ class Component extends React.Component {
 
   static propTypes = {
     cartProducts: PropTypes.array,
+    getCartProducts: PropTypes.func,
+  }
+
+  componentDidMount() {
+    const { getCartProducts } = this.props;
+
+    getCartProducts();
   }
 
   cartProductCounter() {
     const { cartProducts } = this.props;
 
-    return cartProducts.length;
+    return cartProducts? cartProducts.length : 0;
   }
 
   render() {
@@ -38,11 +45,11 @@ const mapStateToProps = state => ({
   cartProducts: getAllCartProducts(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  getCartProducts: () => dispatch(getCartProductsRequest()),
+});
 
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   // Component as CartLogo,
