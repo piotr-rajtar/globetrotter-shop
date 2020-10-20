@@ -6,7 +6,7 @@ import { OrderSummaryList } from '../../features/OrderSummaryList/OrderSummaryLi
 import { OrderForm } from '../../features/OrderForm/OrderForm';
 
 import { connect } from 'react-redux';
-import { getAllCartProducts, clearCart } from '../../../redux/cartRedux';
+import { getAllCartProducts, clearCartRequest, getCartProductsRequest } from '../../../redux/cartRedux';
 import { addOrderRequest } from '../../../redux/ordersRedux';
 import { createDate } from '../../../utils';
 
@@ -45,6 +45,13 @@ class Component extends React.Component {
     cartProducts: PropTypes.array,
     addOrderRequest: PropTypes.func,
     clearCartProducts: PropTypes.func,
+    getCartProducts: PropTypes.func,
+  }
+
+  componentDidMount() {
+    const { getCartProducts } = this.props;
+
+    getCartProducts();
   }
 
   snackbarClose = () => {
@@ -142,7 +149,7 @@ class Component extends React.Component {
     clearCartProducts();
   }
 
-  submitForm = (event) => {
+  submitForm = async (event) => {
     const { orderData } = this.state;
     const { addOrderRequest, cartProducts } = this.props;
 
@@ -156,7 +163,7 @@ class Component extends React.Component {
     else if(orderData.name.length < 7) error ='Please enter you full name - min. 7 characters';
 
     if(!error) {
-      addOrderRequest(orderData);
+      await addOrderRequest(orderData);
       this.showAlert(error);
       this.clearCart();
     } else {
@@ -278,7 +285,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addOrderRequest: orderData => dispatch(addOrderRequest(orderData)),
-  clearCartProducts: () => dispatch(clearCart()),
+  clearCartProducts: () => dispatch(clearCartRequest()),
+  getCartProducts: () => dispatch(getCartProductsRequest()),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
