@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { removeCartProduct, updateCartProduct } from '../../../redux/cartRedux';
+import { removeCartProductRequest, updateCartProductRequest } from '../../../redux/cartRedux';
 import { formInputNumberParser } from '../../../utils';
 import { IMAGES_URL } from '../../../config';
 
@@ -234,8 +234,8 @@ class Component extends React.Component {
 // });
 
 const mapDispatchToProps = dispatch => ({
-  removeCartProduct: id => dispatch(removeCartProduct(id)),
-  updateCartProduct: updatedCartProduct => dispatch(updateCartProduct(updatedCartProduct)),
+  removeCartProduct: id => dispatch(removeCartProductRequest(id)),
+  updateCartProduct: updatedCartProduct => dispatch(updateCartProductRequest(updatedCartProduct)),
 });
 
 const Container = connect(null, mapDispatchToProps)(Component);
