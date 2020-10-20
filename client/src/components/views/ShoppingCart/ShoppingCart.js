@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { getAllCartProducts } from '../../../redux/cartRedux';
+import { getAllCartProducts, getCartProductsRequest } from '../../../redux/cartRedux';
 
 import { CartProductList } from '../../features/CartProductList/CartProductList';
 
@@ -20,6 +20,13 @@ class Component extends React.Component {
 
   static propTypes = {
     cartProducts: PropTypes.array,
+    getCartProducts: PropTypes.func,
+  }
+
+  componentDidMount() {
+    const { getCartProducts } = this.props;
+
+    getCartProducts();
   }
 
   render() {
@@ -157,11 +164,11 @@ const mapStateToProps = state => ({
   cartProducts: getAllCartProducts(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  getCartProducts: () => dispatch(getCartProductsRequest()),
+});
 
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   // Component as ShoppingCart,
