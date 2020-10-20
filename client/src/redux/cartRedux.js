@@ -25,6 +25,64 @@ export const removeCartProduct = payload => ({ payload, type: REMOVE_CART_PRODUC
 export const updateCartProduct = payload => ({ payload, type: UPDATE_CART_PRODUCT });
 export const clearCart = payload => ({ payload, type: CLEAR_CART });
 
+/* thunk creators */
+export const addCartProductRequest = (cartProduct) => {
+  return async (dispatch, getState) => {
+
+    await dispatch(addCartProduct(cartProduct));
+
+    const { cart }  = await getState();
+
+    const updatedCart  = cart.data;
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+};
+
+export const getCartProductsRequest = () => {
+  return async dispatch => {
+    const cartProducts = JSON.parse(localStorage.getItem('cart'));
+
+    if (cartProducts === null) return;
+    else await dispatch(fetchSuccess(cartProducts));
+  };
+};
+
+export const removeCartProductRequest = (id) => {
+  return async (dispatch, getState) => {
+
+    await dispatch(removeCartProduct(id));
+
+    const { cart }  = await getState();
+
+    const updatedCart  = cart.data;
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+};
+
+export const updateCartProductRequest = (cartProduct) => {
+  return async (dispatch, getState) => {
+
+    await dispatch(updateCartProduct(cartProduct));
+
+    const { cart }  = await getState();
+
+    const updatedCart  = cart.data;
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+};
+
+export const clearCartRequest = () => {
+  return async (dispatch) => {
+
+    await dispatch(clearCart());
+
+    localStorage.removeItem('cart');
+  };
+};
+
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {
   switch (action.type) {
