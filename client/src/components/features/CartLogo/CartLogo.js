@@ -52,7 +52,6 @@ const mapDispatchToProps = dispatch => ({
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  // Component as CartLogo,
   Container as CartLogo,
   Component as CartLogoComponent,
 };
