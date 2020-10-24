@@ -15,7 +15,9 @@ const Component = () => (
     <Button className={styles.link} component={Link} to={`/`}>
       <PublicIcon className={styles.icon} />
     </Button>
-    <h1 className={styles.title}>The GlobeTrotter</h1>
+    <Button className={styles.link} component={Link} to={`/`}>
+      <h1 className={styles.title}>The GlobeTrotter</h1>
+    </Button>
   </span>
 );
 
