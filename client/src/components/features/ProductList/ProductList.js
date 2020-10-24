@@ -16,7 +16,7 @@ const Component = ({ products }) => (
     container
     className={styles.root}
     direction='row'
-    justify='space-between'
+    justify='space-around'
     alignItems='center'
   >
 

@@ -1,4 +1,11 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  margin-bottom: 40px;
+}
+
+@media (max-width: $small) {
+  .root {
+    margin-bottom: 0;
+  }
+}
