@@ -26,22 +26,20 @@
   color: inherit;
 }
 
-.cardTitle {
+.cardBody, .cardTitle {
   text-align: center;
+}
+
+.cardTitle {
   color: $main-color;
 }
 
 .cardBody {
-  text-align: center;
   color: $secondary-color;
 }
 
 @media (max-width: $small) {
-  .root {
-    width: 280px;
-  }
-
-  .photo {
+  .root, .photo {
     width: 280px;
   }
 }
