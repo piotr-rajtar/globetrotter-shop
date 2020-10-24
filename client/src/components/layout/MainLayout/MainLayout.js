@@ -17,15 +17,15 @@ const Component = ({children}) => (
   <div className={styles.root}>
     <AppBar position='fixed'>
       <Container>
-        <Toolbar>
+        <Toolbar className={styles.headerToolbar}>
           <Header />
         </Toolbar>
       </Container>
     </AppBar>
 
-    <Container>
+    <Container className={styles.contentBody}>
       <Toolbar />
-      <Toolbar />
+      <Toolbar className={styles.bodyToolbar} />
       {children}
       <Toolbar />
       <Toolbar />
@@ -33,7 +33,7 @@ const Component = ({children}) => (
 
     <AppBar position='fixed' className={styles.footer}>
       <Container>
-        <Toolbar>
+        <Toolbar className={styles.footerToolbar}>
           <Footer />
         </Toolbar>
       </Container>

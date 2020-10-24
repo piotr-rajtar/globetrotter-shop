@@ -7,3 +7,13 @@
   top: auto;
   bottom: 0;
 }
+
+@media (max-width: $small) {
+  .bodyToolbar {
+    min-height: 10px;
+  }
+
+  .headerToolbar, .footerToolbar {
+    padding: 0;
+  }
+}
