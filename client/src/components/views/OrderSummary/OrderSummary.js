@@ -292,7 +292,6 @@ const mapDispatchToProps = dispatch => ({
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  // Component as OrderSummary,
   Container as OrderSummary,
   Component as OrderSummaryComponent,
 };
