@@ -281,7 +281,7 @@ class Component extends React.Component {
 
               <Grid item container>
 
-                <Grid item xs={6} className={styles.buttonHomepage}>
+                <Grid item xs={12} md={6} className={styles.buttonHomepage}>
                   <Button
                     variant='contained'
                     size='large'
@@ -291,11 +291,11 @@ class Component extends React.Component {
                     className={styles.button}
                     startIcon={<HomeIcon />}
                   >
-                    HOMEPAGE
+                    <span>HOMEPAGE</span>
                   </Button>
                 </Grid>
 
-                <Grid item xs={6} className={styles.buttonCart}>
+                <Grid item xs={12} md={6} className={styles.buttonCart}>
                   <Button
                     variant='contained'
                     size='large'
@@ -304,7 +304,7 @@ class Component extends React.Component {
                     className={styles.button}
                     startIcon={<AddShoppingCartIcon />}
                   >
-                    ADD TO CART
+                    <span>ADD TO CART</span>
                   </Button>
                 </Grid>
 

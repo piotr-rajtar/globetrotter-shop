@@ -11,6 +11,7 @@
   color: $main-color;
   padding: 20px 0;
   text-align: center;
+  font-weight: bold;
 }
 
 .description {
@@ -37,12 +38,7 @@
   }
 }
 
-.productCounterContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.commentFieldContainer {
+.productCounterContainer, .commentFieldContainer {
   display: flex;
   justify-content: center;
 }
@@ -64,3 +60,37 @@
   justify-content: flex-end;
 }
 
+
+@media (max-width: $medium) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1.4rem;
+  }
+
+  .button{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .buttonHomepage, .buttonCart {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: $small) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .featuresContainer {
+    padding-left: 0;
+  }
+}
