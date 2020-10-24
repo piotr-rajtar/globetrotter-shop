@@ -7,16 +7,14 @@
   padding: 0 30px;
 }
 
-.title {
+.title, .description {
   color: $main-color;
-  padding: 20px 0;
   text-align: center;
-  font-weight: bold;
 }
 
-.description {
-  text-align: center;
-  color: $main-color;
+.title {
+  padding: 20px 0;
+  font-weight: bold;
 }
 
 .featuresContainer {
@@ -50,13 +48,15 @@
   font-weight: bold;
 }
 
-.buttonHomepage {
+.buttonHomepage, .buttonCart {
   display: flex;
+}
+
+.buttonHomepage {
   justify-content: flex-start;
 }
 
 .buttonCart {
-  display: flex;
   justify-content: flex-end;
 }
 
