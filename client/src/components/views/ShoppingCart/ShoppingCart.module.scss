@@ -11,6 +11,7 @@
   color: $main-color;
   margin: 20px auto;
   text-align: center;
+  font-weight: bold;
 }
 
 .text {
@@ -42,12 +43,12 @@
 
 .buttonEmptyCartContainer {
   display: flex;
-  justify-content: center;;
+  justify-content: center;
   margin-bottom: 30px;
 }
 
 .buttonsContainer {
-  margin-bottom: 40px;;
+  margin-bottom: 40px;
 }
 
 .buttonHomepage {
@@ -58,4 +59,28 @@
 .buttonOrderSummary {
   display: flex;
   justify-content: flex-end;
+}
+
+@media (max-width: $small) {
+  .gridContainer {
+    padding: 0 5px;
+  }
+
+  .title {
+    margin: 20px auto 0;
+    font-size: 2rem;
+  }
+
+  .button{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .totalCost {
+    font-size: 1.8rem;
+  }
+
+  .buttonsContainer {
+    margin-bottom: 0;
+  }
 }

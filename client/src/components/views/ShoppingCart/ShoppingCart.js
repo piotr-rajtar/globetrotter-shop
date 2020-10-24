@@ -93,7 +93,7 @@ class Component extends React.Component {
 
     return(
       <Paper>
-        <Grid container className = {styles.gridContainer}>
+        <Grid container className={styles.gridContainer}>
 
           <Grid item xs={12}>
             <Typography
@@ -123,7 +123,7 @@ class Component extends React.Component {
 
           <Grid item container className={styles.buttonsContainer}>
 
-            <Grid item xs={6} className={styles.buttonHomepage}>
+            <Grid item xs={12} sm={6} className={styles.buttonHomepage}>
               <Button
                 variant='contained'
                 size='large'
@@ -137,7 +137,7 @@ class Component extends React.Component {
               </Button>
             </Grid>
 
-            <Grid item xs={6} className={styles.buttonOrderSummary}>
+            <Grid item xs={12} sm={6} className={styles.buttonOrderSummary}>
               <Button
                 variant='contained'
                 size='large'
