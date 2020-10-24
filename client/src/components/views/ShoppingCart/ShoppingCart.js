@@ -171,7 +171,6 @@ const mapDispatchToProps = dispatch => ({
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  // Component as ShoppingCart,
   Container as ShoppingCart,
   Component as ShoppingCartComponent,
 };
