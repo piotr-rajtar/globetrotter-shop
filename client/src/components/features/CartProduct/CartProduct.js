@@ -158,15 +158,9 @@ class Component extends React.Component {
     const { cartProductData } = this.state;
 
     return(
-      <Grid container>
+      <Grid container align='center'>
 
-        <Grid item xs={1} className={styles.iconContainer}>
-          <IconButton onClick={this.removeFromCart}>
-            <DeleteIcon className={styles.icon} />
-          </IconButton>
-        </Grid>
-
-        <Grid item xs={2} className={styles.cartItem}>
+        <Grid item xs={12} sm={6} md={2} className={styles.cartItem}>
           <ButtonBase
             className={styles.imageContainer}
             component={NavLink}
@@ -176,15 +170,15 @@ class Component extends React.Component {
           </ButtonBase>
         </Grid>
 
-        <Grid item xs={3} className={styles.productNameContainer}>
+        <Grid item xs={12} sm={6} md={3} className={styles.productNameContainer}>
           <Typography className={styles.productName} variant='h6'>
             {name}
           </Typography>
         </Grid>
 
-        <Grid  item xs container direction='column' className={styles.cartFormFields}>
+        <Grid  item xs={12} md={5} container className={styles.cartFormFields}>
 
-          <Grid item xs className={styles.formFieldLine}>
+          <Grid item className={styles.formFieldLine}>
             <ProductCounter
               handleChange={this.handleQuantityChange}
               quantity={cartProductData.quantity}
@@ -193,7 +187,7 @@ class Component extends React.Component {
             />
           </Grid>
 
-          <Grid item xs className={styles.formFieldLine}>
+          <Grid item className={styles.formFieldLine}>
             <TextField
               id='comment'
               label='Comment'
@@ -212,10 +206,16 @@ class Component extends React.Component {
 
         </Grid>
 
-        <Grid item xs={1} className={styles.priceContainer}>
-          <Typography className={styles.price} variant='h6'>
+        <Grid item xs={12} md={1} className={styles.priceContainer}>
+          <Typography className={styles.price} variant='h5'>
             {cartProductData.finalPrice}$
           </Typography>
+        </Grid>
+
+        <Grid item xs={12} md={1} className={styles.iconContainer}>
+          <IconButton onClick={this.removeFromCart}>
+            <DeleteIcon className={styles.icon} />
+          </IconButton>
         </Grid>
 
       </Grid>
