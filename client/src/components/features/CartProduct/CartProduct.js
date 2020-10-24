@@ -223,16 +223,6 @@ class Component extends React.Component {
   }
 }
 
-
-
-
-
-
-
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
-
 const mapDispatchToProps = dispatch => ({
   removeCartProduct: id => dispatch(removeCartProductRequest(id)),
   updateCartProduct: updatedCartProduct => dispatch(updateCartProductRequest(updatedCartProduct)),
@@ -241,7 +231,6 @@ const mapDispatchToProps = dispatch => ({
 const Container = connect(null, mapDispatchToProps)(Component);
 
 export {
-  // Component as CartProduct,
   Container as CartProduct,
   Component as CartProductComponent,
 };
