@@ -49,10 +49,10 @@ class Component extends React.Component {
 
     return(
       <Paper>
-        <Grid container>
+        <Grid container className={styles.gridContainer}>
           <Grid item xs={12}>
             <Typography
-              className={styles.title}
+              className={styles.emptyTitle}
               gutterBottom
               variant='h1'
               component='h1'
@@ -62,7 +62,7 @@ class Component extends React.Component {
           </Grid>
           <Grid item xs={12}>
             <Typography
-              className={styles.text}
+              className={styles.emptyText}
               gutterBottom
               variant='h3'
               component='p'
@@ -70,7 +70,7 @@ class Component extends React.Component {
               Pick something what helps you GlobeTrotting.
             </Typography>
           </Grid>
-          <Grid item xs={12} className={styles.buttonEmptyCartContainer}>
+          <Grid item xs={12} className={styles.buttonsContainer + ' ' + styles.emptyCartButton}>
             <Button
               variant='contained'
               size='large'
