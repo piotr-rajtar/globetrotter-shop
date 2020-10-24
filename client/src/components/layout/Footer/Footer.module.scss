@@ -2,7 +2,7 @@
 
 .root {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin: 5px auto;
   align-items: center;
 }
@@ -19,4 +19,11 @@
 
 .link {
   text-decoration: none;
+}
+
+@media (max-width: $small) {
+  .icon {
+    font-size: 30px;
+    margin: 0 20px;
+  }
 }
