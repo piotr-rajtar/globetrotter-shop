@@ -23,3 +23,23 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+@media (max-width: $medium) {
+  .icon {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: $small) {
+  .icon {
+    font-size: 30px;
+  }
+
+  .productCounter {
+    font-size: 15px;
+  }
+
+  .link {
+    padding-right: 0;
+  }
+}
