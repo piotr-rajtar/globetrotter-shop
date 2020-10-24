@@ -1,9 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { Link } from 'react-router-dom';
 
 import styles from './ShopLogo.module.scss';
 
@@ -21,23 +18,7 @@ const Component = () => (
   </span>
 );
 
-// Component.propTypes = {
-//   children: PropTypes.node,
-//   className: PropTypes.string,
-// };
-
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
 export {
   Component as ShopLogo,
-  // Container as ShopLogo,
   Component as ShopLogoComponent,
 };
