@@ -15,7 +15,7 @@ const Component = () => (
     >
       Loading...
     </Typography>
-    <CircularProgress />
+    <CircularProgress size={35} />
   </div>
 );
 
