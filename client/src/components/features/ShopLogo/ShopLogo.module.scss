@@ -3,7 +3,6 @@
  .root {
    color: $main-color;
    display: flex;
-   justify-content: space-between;
    align-items: center;
  }
 
@@ -13,6 +12,7 @@
 
    &:hover {
      color: $main-color;
+     text-decoration: none;
    }
  }
 
@@ -23,4 +23,28 @@
  .title {
    font-size: 50px;
    margin: 0 15px;
+   font-family: cursive;
  }
+
+ @media (max-width: $medium) {
+  .icon {
+    font-size: 60px;
+  }
+
+  .title {
+    font-size: 30px;
+    margin: 0;
+  }
+}
+
+@media (max-width: $small) {
+  .root {
+    a:first-of-type {
+      display: none;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+  }
+}
