@@ -49,13 +49,15 @@
   }
 }
 
-.buttonCart {
+.buttonCart, .buttonSubmitOrder {
   display: flex;
+}
+
+.buttonCart {
   justify-content: flex-start;
 }
 
 .buttonSubmitOrder {
-  display: flex;
   justify-content: flex-end;
 }
 
