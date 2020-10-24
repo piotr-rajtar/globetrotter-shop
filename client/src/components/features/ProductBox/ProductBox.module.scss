@@ -1,11 +1,14 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  margin: 20px 20px;
+}
 
 .photo {
+  margin: auto;
   width: 300px;
   height: 400px;
+  object-fit: contain;
 }
 
 .button {
@@ -31,4 +34,14 @@
 .cardBody {
   text-align: center;
   color: $secondary-color;
+}
+
+@media (max-width: $small) {
+  .root {
+    width: 280px;
+  }
+
+  .photo {
+    width: 280px;
+  }
 }

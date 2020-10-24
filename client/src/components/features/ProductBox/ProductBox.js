@@ -18,7 +18,7 @@ import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 
 const Component = ({_id, name, type, price, photo}) => (
-  <Card>
+  <Card className={styles.root}>
     <CardActionArea
       className={styles.cardClickableArea}
       component={NavLink}
