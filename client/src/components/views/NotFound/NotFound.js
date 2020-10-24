@@ -41,7 +41,7 @@ const Component = () => (
 
       <Grid item xs={12}>
         <Typography
-          className={styles.text}
+          className={styles.text + ' ' + styles.textBottom}
           gutterBottom
           variant='h6'
           component='p'

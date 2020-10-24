@@ -11,6 +11,7 @@
   color: $main-color;
   margin: 20px auto;
   text-align: center;
+  font-weight: bold;
 }
 
 .text {
@@ -31,4 +32,34 @@
     color: $main-color;
     text-decoration: none;
   }
+}
+
+@media (max-width: $small) {
+  .gridContainer {
+    padding: 5px;
+  }
+
+  .title {
+    margin: 20px auto 0;
+    font-size: 5rem;
+  }
+
+  .buttonContainer {
+    margin: 30px auto 0;
+  }
+
+  .button{
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .text {
+    font-size: 2rem;
+  }
+
+  .textBottom {
+    font-size: 1rem;
+  }
+
+
 }
