@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
-
 import { ProductBox } from '../ProductBox/ProductBox';
 
 import styles from './ProductList.module.scss';
@@ -35,18 +32,7 @@ Component.propTypes = {
   products: PropTypes.array,
 };
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
 export {
   Component as ProductList,
-  // Container as ProductList,
   Component as ProductListComponent,
 };
