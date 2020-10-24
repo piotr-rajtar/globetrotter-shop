@@ -11,6 +11,7 @@
   color: $main-color;
   margin: 20px auto;
   text-align: center;
+  font-weight: bold;
 }
 
 .totalCostContainer {
@@ -34,6 +35,9 @@
 
 .buttonsContainer {
   margin: 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .button {
@@ -53,4 +57,32 @@
 .buttonSubmitOrder {
   display: flex;
   justify-content: flex-end;
+}
+
+@media (max-width: $small) {
+  .gridContainer {
+    padding: 5px;
+  }
+
+  .title {
+    margin: 20px auto 0;
+    font-size: 1.7rem;
+  }
+
+  .totalCost {
+    font-size: 1.5rem;
+  }
+
+  .button{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .table {
+    margin-top: 10px;
+  }
+
+  .buttonsContainer {
+    margin: 20px 0 0;
+  }
 }

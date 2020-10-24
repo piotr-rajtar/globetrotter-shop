@@ -205,7 +205,7 @@ class Component extends React.Component {
             </Typography>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} className={styles.table}>
             <OrderSummaryList cartProducts={cartProducts} />
           </Grid>
 
@@ -230,7 +230,7 @@ class Component extends React.Component {
             </Typography>
           </Grid>
 
-          <Grid item xs={6} className={styles.form}>
+          <Grid item xs={12} sm={8} md={6} className={styles.form}>
             <OrderForm
               orderData={orderData}
               handleChange={this.handleChange}
@@ -241,7 +241,7 @@ class Component extends React.Component {
 
           <Grid item container className={styles.buttonsContainer}>
 
-            <Grid item xs={6} className={styles.buttonCart}>
+            <Grid item xs={12} sm={5} className={styles.buttonCart}>
               <Button
                 variant='contained'
                 size='large'
@@ -251,11 +251,11 @@ class Component extends React.Component {
                 className={styles.button}
                 startIcon={<ShoppingCartIcon />}
               >
-                GO BACK TO CART
+                BACK TO CART
               </Button>
             </Grid>
 
-            <Grid item xs={6} className={styles.buttonSubmitOrder}>
+            <Grid item xs={12} sm={5} className={styles.buttonSubmitOrder}>
               <Button
                 variant='contained'
                 color='primary'
@@ -266,7 +266,7 @@ class Component extends React.Component {
                 form='orderSummaryForm'
                 startIcon={<SendIcon />}
               >
-                SUBMIT ORDER FORM
+                SUBMIT ORDER
               </Button>
             </Grid>
 
