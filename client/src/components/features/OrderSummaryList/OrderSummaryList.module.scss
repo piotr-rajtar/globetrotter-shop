@@ -3,37 +3,25 @@
 // .root {
 // }
 
-.tableHeaderCenter {
+.tableHeader{
   font-weight: bold;
   color: $main-color;
-  text-align: center;
 }
 
-.tableHeaderLeftEdge {
-  font-weight: bold;
-  color: $main-color;
-  text-align: left;
-}
-
-.tableHeaderRightEdge {
-  font-weight: bold;
-  color: $main-color;
-  text-align: right;
-}
-
-.tableBodyCenter {
-  text-align: center;
+.tableBodyCenter, .tableBodyEdge {
   color: $secondary-color;
 }
 
-.tableBodyLeftEdge {
-  text-align: left;
+.tableEdge {
   font-weight: bold;
-  color: $secondary-color;
 }
 
-.tableBodyRightEdge {
-  text-align: right;
-  color: $secondary-color;
-  font-weight: bold;
+.comment {
+  word-break: break-word;
+}
+
+@media (max-width: $small) {
+  .tableHeader, .tableBodyCenter, .tableBodyEdge {
+    padding: 5px;
+  }
 }

@@ -16,19 +16,70 @@ const Component = ({cartProducts}) => (
   <Table>
     <TableHead>
       <TableRow>
-        <TableCell className={styles.tableHeaderLeftEdge}>Product</TableCell>
-        <TableCell className={styles.tableHeaderCenter}>Quantity</TableCell>
-        <TableCell className={styles.tableHeaderCenter}>Comment</TableCell>
-        <TableCell className={styles.tableHeaderRightEdge}>Price</TableCell>
+
+        <TableCell
+          align='left'
+          className={styles.tableHeader}
+        >
+          Product
+        </TableCell>
+
+        <TableCell
+          align='center'
+          className={styles.tableHeader}
+        >
+          Quantity
+        </TableCell>
+
+        <TableCell
+          align='center'
+          className={styles.tableHeader}
+        >
+          Comment
+        </TableCell>
+
+        <TableCell
+          align='right'
+          className={styles.tableHeader}
+        >
+          Price
+        </TableCell>
+
       </TableRow>
     </TableHead>
+
     <TableBody>
       {cartProducts.map(cartProduct => (
         <TableRow key={cartProduct.id}>
-          <TableCell className={styles.tableBodyLeftEdge}>{cartProduct.name}</TableCell>
-          <TableCell className={styles.tableBodyCenter}>{cartProduct.quantity}</TableCell>
-          <TableCell className={styles.tableBodyCenter}>{cartProduct.comment}</TableCell>
-          <TableCell className={styles.tableBodyRightEdge}>{cartProduct.finalPrice}</TableCell>
+
+          <TableCell
+            align='left'
+            className={styles.tableBodyEdge}
+          >
+            {cartProduct.name}
+          </TableCell>
+
+          <TableCell
+            align='center'
+            className={styles.tableBodyCenter}
+          >
+            {cartProduct.quantity}
+          </TableCell>
+
+          <TableCell
+            align='center'
+            className={styles.tableBodyCenter + ' ' + styles.comment}
+          >
+            {cartProduct.comment}
+          </TableCell>
+
+          <TableCell
+            align='right'
+            className={styles.tableBodyEdge}
+          >
+            {cartProduct.finalPrice}
+          </TableCell>
+
         </TableRow>
       ))}
     </TableBody>
