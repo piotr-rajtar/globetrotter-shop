@@ -7,16 +7,14 @@
   padding: 0 40px;
 }
 
-.title {
+.title, .text {
   color: $main-color;
-  margin: 20px auto;
   text-align: center;
-  font-weight: bold;
 }
 
-.text {
-  color: $main-color;
-  text-align: center;
+.title {
+  margin: 20px auto;
+  font-weight: bold;
 }
 
 .buttonContainer {
