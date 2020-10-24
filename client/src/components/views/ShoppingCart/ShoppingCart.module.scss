@@ -52,13 +52,15 @@
   margin-bottom: 40px;
 }
 
-.buttonHomepage {
+.buttonHomepage, .buttonOrderSummary {
   display: flex;
+}
+
+.buttonHomepage {
   justify-content: flex-start;
 }
 
 .buttonOrderSummary {
-  display: flex;
   justify-content: flex-end;
 }
 
