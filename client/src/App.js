@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import './App.scss';
@@ -22,16 +22,6 @@ const theme = createMuiTheme({
     primary: { main: '#3b3b3b' },
   },
 });
-
-export default function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}
 
 const App = () => (
   <Provider store={store}>
