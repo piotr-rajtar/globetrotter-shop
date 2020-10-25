@@ -15,6 +15,7 @@ import { OrderSummary } from './components/views/OrderSummary/OrderSummary';
 import { Product } from './components/views/Product/Product';
 import { ShoppingCart } from './components/views/ShoppingCart/ShoppingCart';
 import { NotFound } from './components/views/NotFound/NotFound';
+import ScrollToTop from './ScrollToTop';
 
 const theme = createMuiTheme({
   palette: {
@@ -28,6 +29,7 @@ const App = () => (
       <StylesProvider injectFirst>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          <ScrollToTop />
           <MainLayout>
             <Switch>
               <Route exact path='/' component={Homepage} />
