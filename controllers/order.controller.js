@@ -31,6 +31,7 @@ exports.addNewOrder = async (req, res) => {
           && phoneCheck
           && preferredContact
           && name.length > 7
+          && name.length <= 30
           && message.length <= 100
           && totalCost > 0
           && req.body.orderDetails.length > 0
