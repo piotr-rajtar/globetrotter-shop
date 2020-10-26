@@ -1,4 +1,7 @@
 const Order = require('../models/order.model');
+const emailParser = require('../utils').emailParser;
+const phoneParser = require('../utils').phoneParser;
+const nameParser = require('../utils').nameParser;
 
 exports.addNewOrder = async (req, res) => {
     try {
@@ -13,12 +16,19 @@ exports.addNewOrder = async (req, res) => {
           else {
             orderErrorCheck = true;
           }
-        }); 
+        });
+        
+        const emailCheck = emailParser(email);
+        const phoneCheck = phoneParser(phone);
+        const nameCheck = nameParser(name);
 
         if(
           name
+          && nameCheck
           && email
+          && emailCheck
           && phone
+          && phoneCheck
           && preferredContact
           && name.length > 7
           && message.length <= 100
