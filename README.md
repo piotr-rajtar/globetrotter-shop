@@ -1,6 +1,7 @@
 # Globetrotter Shop
 This application presents an example of simple online store with handmade products.
-Click [here](https://globetrotter-shop.herokuapp.com/) to get a first look at my Globetrotter Shop.
+
+Click [here](https://globetrotter-shop.herokuapp.com/) to have a first look at my Globetrotter Store.
 
 ## Table of contents
 * [General info](#general-info)
