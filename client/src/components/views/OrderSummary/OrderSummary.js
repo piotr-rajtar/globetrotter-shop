@@ -8,7 +8,7 @@ import { OrderForm } from '../../features/OrderForm/OrderForm';
 import { connect } from 'react-redux';
 import { getAllCartProducts, clearCartRequest, getCartProductsRequest } from '../../../redux/cartRedux';
 import { addOrderRequest } from '../../../redux/ordersRedux';
-import { createDate } from '../../../utils';
+import { createDate, emailParser, phoneParser, nameParser } from '../../../utils';
 
 import styles from './OrderSummary.module.scss';
 
@@ -157,10 +157,18 @@ class Component extends React.Component {
 
     let error = null;
 
+    const validName = nameParser(orderData.name);
+    const validEmail = emailParser(orderData.email);
+    const validPhone = phoneParser(orderData.phone);
+
     if(cartProducts.length === 0) error='Your cart is empty!';
 
     if(!orderData.name.length || !orderData.email.length || !orderData.phone.length) error='All form fields should be filled';
-    else if(orderData.name.length < 7) error ='Please enter you full name - min. 7 characters';
+    else if(orderData.name.length < 7) error = 'Your full name should have at least 7 characters';
+    else if(orderData.name.length > 30) error = 'Your full name should have max 30 characters';
+    else if (!validName) error = 'Invalid name format';
+    else if (!validEmail) error = 'Invalid email format';
+    else if (!validPhone) error = 'Invalid phone format';
 
     if(!error) {
       await addOrderRequest(orderData);
