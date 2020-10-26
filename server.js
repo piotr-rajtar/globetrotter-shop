@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const mongoose = require('mongoose');
+const connectToDB = require('./db');
 
 /* ENDPOINTS ROUTES IMPORT */
 const productRoutes = require('./routes/product.routes');
@@ -30,16 +30,8 @@ app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
 
-/* MONGOOSE */
-const dbURI = process.env.NODE_ENV ==='production'
-  ? `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.n3z6t.mongodb.net/globetrotterShop?retryWrites=true&w=majority`
-  : 'mongodb://localhost:27017/globetrotterShop';
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
-db.once('open', () => {
-  console.log('Successfully connected to the database');
-});
-db.on('error', err => console.log('Error: ' + err));
+/* CONNECT TO DB */
+connectToDB();
 
 /* START SERVER */
 const port = process.env.PORT || 8000;
