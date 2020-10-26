@@ -165,7 +165,7 @@ class Component extends React.Component {
 
     if(!orderData.name.length || !orderData.email.length || !orderData.phone.length) error='All form fields should be filled';
     else if(orderData.name.length < 7) error = 'Your full name should have at least 7 characters';
-    else if(orderData.name.length > 30) error = 'Your full name should have max 30 characters';
+    else if(orderData.name.length >= 30) error = 'Your full name should have max 30 characters';
     else if (!validName) error = 'Invalid name format';
     else if (!validEmail) error = 'Invalid email format';
     else if (!validPhone) error = 'Invalid phone format';
