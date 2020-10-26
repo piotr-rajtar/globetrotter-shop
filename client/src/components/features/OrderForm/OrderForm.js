@@ -22,6 +22,7 @@ const Component = ({submitForm, orderData, handleChange, formId}) => (
       variant='outlined'
       InputProps={{
         minLength: 7,
+        maxLength: 30,
       }}
       required
       fullWidth
