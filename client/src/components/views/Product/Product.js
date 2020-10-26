@@ -145,7 +145,7 @@ class Component extends React.Component {
       this.setState({
         snackbar: {
           snackbarOpen: true,
-          snackbarMessage: 'Please pick at least one product',
+          snackbarMessage: error,
           alertSeverity: 'error',
         },
       });
@@ -167,9 +167,12 @@ class Component extends React.Component {
 
     const cartProduct = {};
 
-    let ifError = false;
+    let error = null;
 
-    if(orderData.finalPrice > 0 && orderData.quantity > 0 && orderData.quantity < 1000 && orderData.comment.length < 100) {
+    if(orderData.finalPrice <= 0 || orderData.quantity <=0 || orderData.quantity >=1000) error ='Number of chosen products is incorrect (1-999). Please double check...';
+    else if(orderData.comment.length > 100) error ='Number of comment chracters is invalid - max 100 charcters';
+
+    if(!error) {
       cartProduct.id = uniqid();
       cartProduct.photo = product.photo[0];
       cartProduct.name = product.name;
@@ -180,12 +183,11 @@ class Component extends React.Component {
       cartProduct.productId = product._id;
 
       addCartProductRequest(cartProduct);
-      this.showAlert(ifError);
+      this.showAlert(error);
       this.clearProductFormData();
     }
     else {
-      let ifError = true;
-      this.showAlert(ifError);
+      this.showAlert(error);
     }
   }
 
